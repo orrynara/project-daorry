@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OKX P2P 종합 가이드 (일반 거래 & 대량 블록딜)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+            background-color: #f8fafc;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .gradient-header {
+            background: linear-gradient(90deg, #1e3a8a, #0c2a6d);
+            color: white;
+        }
+        .section-title {
+            border-left: 4px solid #3b82f6;
+            padding-left: 1rem;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+        .section-title-pro {
+            border-left: 4px solid #f59e0b;
+            padding-left: 1rem;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+        .warning-card {
+            background-color: #fffbeb;
+            border-left: 4px solid #f59e0b;
+        }
+        .requirement-card {
+            background-color: #eff6ff;
+            border-left: 4px solid #2563eb;
+        }
+        .lang-btn.active {
+            background-color: #ffffff;
+            color: #1e3a8a;
+            font-weight: bold;
+        }
+        .flow-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            padding: 2rem 0;
+            overflow-x: auto;
+        }
+        .flow-step {
+            text-align: center;
+            width: 18%;
+            min-width: 120px;
+            position: relative;
+            padding: 0 0.5rem;
+        }
+        .flow-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            border: 3px solid;
+            transition: all 0.3s ease;
+        }
+        .flow-step:hover .flow-icon-wrapper {
+            transform: scale(1.1);
+        }
+        .flow-line {
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            width: 80%;
+            height: 4px;
+            background-image: linear-gradient(to right, #d1d5db 50%, transparent 50%);
+            background-size: 16px 4px;
+            z-index: -1;
+        }
+        @media (max-width: 768px) {
+            .flow-line {
+                display: none;
+            }
+            .flow-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .flow-step {
+                width: 90%;
+                margin-bottom: 1.5rem;
+                display: flex;
+                align-items: center;
+                text-align: left;
+            }
+            .flow-icon-wrapper {
+                margin: 0 1rem 0 0;
+                flex-shrink: 0;
+                width: 60px;
+                height: 60px;
+            }
+            .flow-step:not(:last-child)::after {
+                content: '▼';
+                font-size: 1.5rem;
+                color: #d1d5db;
+                position: absolute;
+                bottom: -1.5rem;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-gray-800">
+
+    <!-- Language Switcher -->
+    <div class="bg-gray-900 text-white p-2">
+        <div class="container mx-auto max-w-5xl flex justify-end items-center space-x-2">
+            <button id="btn-ko" class="lang-btn active px-3 py-1 text-sm rounded-md transition-colors">한국어</button>
+            <button id="btn-en" class="lang-btn px-3 py-1 text-sm rounded-md transition-colors">English</button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="gradient-header p-8 shadow-lg">
+        <div class="container mx-auto max-w-5xl text-center">
+            <div data-lang="ko">
+                <h1 class="text-4xl font-extrabold tracking-tight">OKX P2P 종합 가이드</h1>
+                <p class="mt-2 text-lg opacity-90">일반 거래부터 대량 블록딜까지, 모든 것을 담은 완벽 매뉴얼</p>
+            </div>
+            <div data-lang="en" class="hidden">
+                <h1 class="text-4xl font-extrabold tracking-tight">OKX P2P Comprehensive Guide</h1>
+                <p class="mt-2 text-lg opacity-90">The Complete Manual: From General Trades to Large Block Deals</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto max-w-5xl p-4 md:p-8">
+
+        <!-- Part 1: General P2P Guide -->
+        <div class="mb-16">
+            <div data-lang="ko">
+                <h2 class="text-3xl font-bold mb-8 text-center text-blue-800 tracking-tight">Part 1. 일반 P2P 거래 가이드</h2>
+            </div>
+            <div data-lang="en" class="hidden">
+                <h2 class="text-3xl font-bold mb-8 text-center text-blue-800 tracking-tight">Part 1. General P2P Trading Guide</h2>
+            </div>
+
+            <!-- Infographic for General Trading -->
+            <section id="general-infographic" class="mb-12 card p-6">
+                <div data-lang="ko"><h3 class="section-title mb-4">한눈에 보는 일반 거래 흐름</h3></div>
+                <div data-lang="en" class="hidden"><h3 class="section-title mb-4">General Trade Flow at a Glance</h3></div>
+                <div class="flow-container">
+                    <div class="flow-line"></div>
+                    <!-- Step 1 -->
+                    <div class="flow-step">
+                        <div class="flow-icon-wrapper border-blue-500 text-blue-500"><i class="fas fa-search-dollar fa-2x"></i></div>
+                        <h4 class="font-bold" data-lang="ko">광고 (sell, buy) 선택</h4><h4 class="font-bold hidden" data-lang="en">Select Ad (sell, buy)</h4>
+                        <p class="text-sm text-gray-600" data-lang="ko">원하는 조건의 거래를 찾습니다.</p><p class="text-sm text-gray-600 hidden" data-lang="en">Find a trade with your desired terms.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="flow-step">
+                        <div class="flow-icon-wrapper border-blue-500 text-blue-500"><i class="fas fa-comments fa-2x"></i></div>
+                        <h4 class="font-bold" data-lang="ko">주문 및 합의</h4><h4 class="font-bold hidden" data-lang="en">Order & Chat</h4>
+                        <p class="text-sm text-gray-600" data-lang="ko">주문하고 채팅으로 세부사항을 확인합니다.</p><p class="text-sm text-gray-600 hidden" data-lang="en">Place an order and confirm details via chat.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="flow-step">
+                        <div class="flow-icon-wrapper border-blue-500 text-blue-500"><i class="fas fa-money-bill-wave fa-2x"></i></div>
+                        <h4 class="font-bold" data-lang="ko">구매자 결제</h4><h4 class="font-bold hidden" data-lang="en">Buyer Pays</h4>
+                        <p class="text-sm text-gray-600" data-lang="ko">약속된 방법으로 대금을 송금합니다.</p><p class="text-sm text-gray-600 hidden" data-lang="en">Transfer funds using the agreed method.</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="flow-step">
+                        <div class="flow-icon-wrapper border-blue-500 text-blue-500"><i class="fas fa-lock-open fa-2x"></i></div>
+                        <h4 class="font-bold" data-lang="ko">판매자 코인 전달</h4><h4 class="font-bold hidden" data-lang="en">Seller Releases</h4>
+                        <p class="text-sm text-gray-600" data-lang="ko">판매자가 입금 확인 후 코인을 전송합니다.</p><p class="text-sm text-gray-600 hidden" data-lang="en">Seller releases crypto after confirming payment.</p>
+                    </div>
+                    <!-- Step 5 -->
+                    <div class="flow-step">
+                        <div class="flow-icon-wrapper border-green-500 text-green-500"><i class="fas fa-check-circle fa-2x"></i></div>
+                        <h4 class="font-bold" data-lang="ko">거래 완료</h4><h4 class="font-bold hidden" data-lang="en">Trade Complete</h4>
+                        <p class="text-sm text-gray-600" data-lang="ko">에스크로에서 코인을 받아 거래가 종료됩니다.</p><p class="text-sm text-gray-600 hidden" data-lang="en">Receive crypto from escrow to finish the trade.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Screenshot Section -->
+            <section id="market-screenshot" class="mb-12 card p-6">
+                <div data-lang="ko"><h3 class="section-title mb-4">P2P 마켓 화면 예시</h3></div>
+                <div data-lang="en" class="hidden"><h3 class="section-title mb-4">P2P Market Screen Example</h3></div>
+                <p class="text-gray-600 mb-4" data-lang="ko">아래 이미지를 클릭하면 실시간 OKX P2P 마켓으로 이동하여 거래를 시작할 수 있습니다.</p>
+                <p class="text-gray-600 mb-4 hidden" data-lang="en">Click the image below to go to the live OKX P2P Market and start trading.</p>
+                <a href="https://www.okx.com/p2p-markets" target="_blank" class="block border-4 border-gray-200 rounded-lg overflow-hidden hover:border-blue-500 transition-all duration-300 shadow-lg">
+                    <img src="https://lh3.googleusercontent.com/d/183uYaBzy52QNUEhgoZqovCATbdxkiHGW" alt="OKX P2P Market Screenshot" class="w-full">
+                </a>
+            </section>
+
+            <section id="general-process" class="mb-12 card p-6">
+                <div data-lang="ko"><h3 class="section-title mb-6">거래 절차, 장점 및 소요 시간</h3></div>
+                <div data-lang="en" class="hidden"><h3 class="section-title mb-6">Process, Advantages & Timeframe</h3></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <div data-lang="ko"><h4 class="text-xl font-semibold mb-3 flex items-center"><i class="fas fa-tasks mr-2 text-blue-600"></i>일반 거래 절차</h4></div>
+                        <div data-lang="en" class="hidden"><h4 class="text-xl font-semibold mb-3 flex items-center"><i class="fas fa-tasks mr-2 text-blue-600"></i>General Trading Process</h4></div>
+                        <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                            <li data-lang="ko">P2P 마켓에서 원하는 조건의 광고(오퍼) 생성 또는 선택</li><li data-lang="en" class="hidden">Create or select an ad (offer) with desired terms in the P2P market.</li>
+                            <li data-lang="ko">상대방과 매칭 후 채팅으로 세부 조건 합의</li><li data-lang="en" class="hidden">After matching with a counterparty, agree on detailed terms via chat.</li>
+                            <li data-lang="ko">구매자가 판매자에게 대금 결제 후 '결제완료' 클릭</li><li data-lang="en" class="hidden">The buyer makes the payment to the seller and clicks 'Payment Completed'.</li>
+                            <li data-lang="ko">판매자가 입금 확인 후 OKX 플랫폼에서 '코인 전달(Release)'</li><li data-lang="en" class="hidden">The seller confirms the payment and 'Releases' the crypto on the OKX platform.</li>
+                            <li data-lang="ko">에스크로를 통해 코인이 구매자에게 즉시 지급되며 거래 완료</li><li data-lang="en" class="hidden">The crypto is instantly transferred to the buyer via escrow, completing the trade.</li>
+                        </ol>
+                    </div>
+                    <div>
+                        <div data-lang="ko"><h4 class="text-xl font-semibold mb-3 flex items-center"><i class="fas fa-star mr-2 text-yellow-500"></i>핵심 장점</h4></div>
+                        <div data-lang="en" class="hidden"><h4 class="text-xl font-semibold mb-3 flex items-center"><i class="fas fa-star mr-2 text-yellow-500"></i>Key Advantages</h4></div>
+                        <ul class="space-y-2 text-gray-700">
+                           <li><b class="text-gray-900">✓ 
+                                <span data-lang="ko">에스크로 보호:</span><span data-lang="en" class="hidden">Escrow Protection:</span>
+                            </b> <span data-lang="ko">거래 사기 위험을 원천 차단합니다.</span><span data-lang-en" class="hidden">Eliminates the risk of fraud.</span></li>
+                           <li><b class="text-gray-900">✓ 
+                                <span data-lang="ko">실시간 거래:</span><span data-lang="en" class="hidden">Real-time Trading:</span>
+                            </b> <span data-lang="ko">평균 5~15분 내 신속하게 완료됩니다.</span><span data-lang-en" class="hidden">Completed quickly, typically within 5-15 minutes.</span></li>
+                           <li><b class="text-gray-900">✓ 
+                                <span data-lang="ko">다양한 결제수단:</span><span data-lang="en" class="hidden">Various Payment Methods:</span>
+                            </b> <span data-lang="ko">전 세계 900여 개 결제 수단을 지원합니다.</span><span data-lang-en" class="hidden">Supports over 900 payment methods worldwide.</span></li>
+                           <li><b class="text-gray-900">✓ 
+                                <span data-lang="ko">24시간 지원:</span><span data-lang="en" class="hidden">24/7 Support:</span>
+                            </b> <span data-lang="ko">자동화 시스템 및 분쟁 중재를 지원합니다.</span><span data-lang-en" class="hidden">Provides automated systems and dispute resolution support.</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-6 border-t pt-4">
+                    <div data-lang="ko"><h4 class="text-lg font-semibold mb-2"><i class="far fa-clock mr-2 text-gray-600"></i>예상 소요 시간</h4></div>
+                    <div data-lang="en" class="hidden"><h4 class="text-lg font-semibold mb-2"><i class="far fa-clock mr-2 text-gray-600"></i>Estimated Timeframe</h4></div>
+                    <ul class="list-disc list-inside text-sm">
+                        <li>
+                            <b data-lang="ko">표준 거래:</b><b data-lang="en" class="hidden">Standard Trades:</b>
+                            <span data-lang="ko"> 결제 증빙 확인 후 평균 10분 내외</span><span data-lang="en" class="hidden"> Around 10 minutes after payment proof is confirmed.</span>
+                        </li>
+                        <li>
+                            <b data-lang="ko">대규모 또는 수동 검증 필요 시:</b><b data-lang="en" class="hidden">For large volumes or manual verification:</b>
+                            <span data-lang="ko"> 수 시간 이상 소요 가능</span><span data-lang="en" class="hidden"> May take several hours.</span>
+                        </li>
+                        <li>
+                            <span data-lang="ko">은행 및 제3자 결제 기관의 사정에 따라 지연될 수 있습니다.</span>
+                            <span data-lang="en" class="hidden">Delays can occur depending on the bank or third-party payment provider.</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="fees" class="mb-12 card p-6">
+                <div data-lang="ko"><h3 class="section-title mb-6">P2P 거래 수수료</h3></div>
+                <div data-lang="en" class="hidden"><h3 class="section-title mb-6">P2P Trading Fees</h3></div>
+                <div class="flex items-center bg-green-100 text-green-800 p-4 rounded-lg">
+                    <i class="fas fa-tags text-3xl mr-4"></i>
+                    <div>
+                        <p data-lang="ko" class="text-xl font-bold">OKX는 P2P 거래 자체 수수료가 없습니다 (0원).</p>
+                        <p data-lang="en" class="hidden text-xl font-bold">OKX charges zero fees for P2P trading itself.</p>
+                        <p data-lang="ko" class="text-sm mt-1">단, 은행 송금 등 외부 결제 수단 이용 시 해당 금융기관의 별도 수수료가 발생할 수 있습니다.</p>
+                        <p data-lang="en" class="hidden text-sm mt-1">However, separate fees may be charged by the financial institution for external payment methods like bank transfers.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="general-requirements" class="mb-12 card p-6">
+                 <div data-lang="ko"><h3 class="section-title mb-6">계정 요건 및 등급</h3></div>
+                 <div data-lang="en" class="hidden"><h3 class="section-title mb-6">Account Requirements & Tiers</h3></div>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="border p-4 rounded-lg">
+                        <div data-lang="ko"><h4 class="font-bold text-lg">일반 거래자</h4></div>
+                        <div data-lang="en" class="hidden"><h4 class="font-bold text-lg">General Trader</h4></div>
+                        <p data-lang="ko" class="text-sm text-gray-600 mt-2">모든 이용자는 OKX 계정 등록 및 실명인증(KYC)이 반드시 필요합니다. 미인증 또는 타인 명의 결제수단 사용은 정책 위반으로 P2P 거래가 제한될 수 있습니다.</p>
+                        <p data-lang="en" class="hidden text-sm text-gray-600 mt-2">All users must register an OKX account and complete identity verification (KYC). Using unverified or third-party payment methods is a policy violation and may result in P2P trading restrictions.</p>
+                    </div>
+                    <div class="border p-4 rounded-lg">
+                        <div data-lang="ko"><h4 class="font-bold text-lg">인증 광고주 (Verified Advertiser)</h4></div>
+                        <div data-lang="en" class="hidden"><h4 class="font-bold text-lg">Verified Advertiser</h4></div>
+                        <p data-lang="ko" class="text-sm text-gray-600 mt-2">필수 KYC 외에, 별도 검증 및 일정 금액의 암호화폐 보증금 예치가 필요합니다. 인증 시 광고 상위 노출, 거래 한도 증가, 신속 분쟁 조정 등 우대 혜택이 주어집니다.</p>
+                        <p data-lang="en" class="hidden text-sm text-gray-600 mt-2">In addition to mandatory KYC, separate verification and a security deposit in cryptocurrency are required. Benefits include higher ad visibility, increased transaction limits, and expedited dispute resolution.</p>
+                    </div>
+                 </div>
+            </section>
+            
+            <section id="travel-rule" class="mb-12 card p-6">
+                <div data-lang="ko"><h3 class="section-title mb-6">트래블룰 및 국가별 신고</h3></div>
+                <div data-lang="en" class="hidden"><h3 class="section-title mb-6">Travel Rule & National Reporting</h3></div>
+                <p data-lang="ko" class="text-gray-700">OKX는 국제 자금 이동 규칙인 트래블룰(Travel Rule) 정책을 준수합니다. 이에 따라 거래 금액 및 국가(규제 관할권)에 따라 거래 당사자(구매자/판매자) 모두 수취인의 실명, 주소 등 추가 정보 제출이 필요할 수 있습니다. OKX는 규정 준수를 위해 해당 정보를 수집하고 일부 국가에 거래 내역을 신고할 수 있습니다. 사용자는 자국의 법규를 준수할 의무가 있으며, OKX의 신고와 별개로 개별적인 신고 책임이 발생할 수 있습니다.</p>
+                <p data-lang="en" class="hidden text-gray-700">OKX adheres to the Travel Rule policy for international fund transfers. Accordingly, depending on the transaction amount and country (regulatory jurisdiction), both parties (buyer/seller) may be required to submit additional information, such as the recipient's real name and address. OKX may collect this information for compliance and report transaction details to certain countries. Users are responsible for complying with their local laws, and individual reporting obligations may arise separately from OKX's reporting.</p>
+            </section>
+        </div>
+
+        <hr class="my-16 border-t-2 border-dashed border-gray-300">
+
+        <div class="mb-16">
+            <div data-lang="ko"><h2 class="text-3xl font-bold mb-8 text-center text-amber-600 tracking-tight">Part 2. 대량/블록딜 전문 가이드</h2></div>
+            <div data-lang="en" class="hidden"><h2 class="text-3xl font-bold mb-8 text-center text-amber-600 tracking-tight">Part 2. Professional Guide for Block Deals</h2></div>
+            
+            <!-- Infographic for Block Deals -->
+            <section id="blockdeal-infographic" class="mb-12 card p-6">
+                <div data-lang="ko"><h3 class="section-title-pro mb-4">한눈에 보는 대량 거래 흐름</h3></div>
+                <div data-lang="en" class="hidden"><h3 class="section-title-pro mb-4">Block Deal Flow at a Glance</h3></div>
+                <div class="flow-container">
+                    <div class="flow-line"></div>
+                    <!-- Step 1 -->
+                    <div class="flow-step">
+                        <div class="flow-icon-wrapper border-amber-500 text-amber-500"><i class="fas fa-user-check fa-2x"></i></div>
+                        <h4 class="font-bold" data-lang="ko">광고주 접촉</h4><h4 class="font-bold hidden" data-lang="en">Contact Advertiser</h4>
+                        <p class="text-sm text-gray-600" data-lang="ko">인증된 대량 거래 광고주와 연결합니다.</p><p class="text-sm text-gray-600 hidden" data-lang="en">Connect with a verified block trade advertiser.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="flow-step">
+                        <div class="flow-icon-wrapper border-amber-500 text-amber-500"><i class="fas fa-handshake fa-2x"></i></div>
+                        <h4 class="font-bold" data-lang="ko">조건 협의</h4><h4 class="font-bold hidden" data-lang="en">Negotiate Terms</h4>
+                        <p class="text-sm text-gray-600" data-lang="ko">가격, 시기, 분할 등 세부사항을 조율합니다.</p><p class="text-sm text-gray-600 hidden" data-lang-en">Arrange details like price, timing, and tranches.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="flow-step">
+                        <div class="flow-icon-wrapper border-amber-500 text-amber-500"><i class="fas fa-file-signature fa-2x"></i></div>
+                        <h4 class="font-bold" data-lang="ko">에스크로 주문</h4><h4 class="font-bold hidden" data-lang="en">Create Escrow Order</h4>
+                        <p class="text-sm text-gray-600" data-lang="ko">합의된 내용으로 공식 주문을 생성합니다.</p><p class="text-sm text-gray-600 hidden" data-lang-en">Create an official order with the agreed terms.</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="flow-step">
+                        <div class="flow-icon-wrapper border-amber-500 text-amber-500"><i class="fas fa-university fa-2x"></i></div>
+                        <h4 class="font-bold" data-lang="ko">대금 결제 (SWIFT 등)</h4><h4 class="font-bold hidden" data-lang="en">Wire Payment (SWIFT)</h4>
+                        <p class="text-sm text-gray-600" data-lang="ko">은행을 통해 대규모 자금을 이체합니다.</p><p class="text-sm text-gray-600 hidden" data-lang-en">Transfer large funds via bank wire.</p>
+                    </div>
+                    <!-- Step 5 -->
+                    <div class="flow-step">
+                        <div class="flow-icon-wrapper border-green-500 text-green-500"><i class="fas fa-check-double fa-2x"></i></div>
+                        <h4 class="font-bold" data-lang="ko">거래 완료</h4><h4 class="font-bold hidden" data-lang="en">Trade Complete</h4>
+                        <p class="text-sm text-gray-600" data-lang="ko">입금 확인 후 코인을 받아 거래가 종료됩니다.</p><p class="text-sm text-gray-600 hidden" data-lang-en">Receive crypto after payment is confirmed.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="intro-pro" class="mb-12 card p-6">
+                <div data-lang="ko"><h3 class="section-title-pro mb-6">대량 거래자(Block Trader)를 위한 서문</h3></div>
+                <div data-lang="en" class="hidden"><h3 class="section-title-pro mb-6">Preface for Block Traders</h3></div>
+                <p data-lang="ko" class="text-gray-700 leading-relaxed">본 가이드는 최소 5,000 BTC 이상의 대규모 암호화폐를 거래하고자 하는 전문 투자자, 기관 및 고액 자산가를 위해 작성되었습니다. 일반 P2P 거래와 달리, 대량 거래는 강화된 신원 인증(KYC), 자금 증명(POF), 그리고 자금 출처 증명(Proof of Source of Wealth)이 필수적으로 요구됩니다. OKX는 안전하고 규정을 준수하는 거래 환경을 제공하기 위해 이러한 절차를 엄격하게 관리합니다.</p>
+                <p data-lang="en" class="hidden" class="text-gray-700 leading-relaxed">This guide is intended for professional investors, institutions, and high-net-worth individuals looking to trade large volumes of cryptocurrency (minimum 5,000 BTC). Unlike general P2P trading, block deals require Enhanced KYC, Proof of Funds (POF), and Proof of Source of Wealth (POSW). OKX strictly manages these procedures to provide a secure and compliant trading environment.</p>
+                <div class="mt-4 warning-card p-4 rounded-r-lg">
+                    <p class="font-bold text-amber-800 flex items-center"><i class="fas fa-exclamation-triangle mr-2"></i>
+                        <span data-lang="ko">필독: 거래 전제 조건</span><span data-lang="en" class="hidden">Prerequisite: Read Before Trading</span>
+                    </p>
+                    <p data-lang="ko" class="text-sm text-amber-700 mt-1">본 가이드에서 설명하는 모든 거래 절차는 OKX의 최고 등급 신원 인증 및 자금 증명 절차를 통과한 사용자를 기준으로 합니다. 사전 준비 없이 거래를 시도할 경우 계정이 동결되거나 거래가 지연될 수 있습니다.</p>
+                    <p data-lang="en" class="hidden" class="text-sm text-amber-700 mt-1">All trading procedures described in this guide are based on users who have passed OKX's highest-level identity and fund verification processes. Attempting to trade without prior preparation may result in account freezes or delays.</p>
+                </div>
+            </section>
+
+            <section id="verification" class="mb-12 card p-8">
+                <div data-lang="ko"><h3 class="section-title-pro mb-6">대량 거래 필수 인증 절차</h3></div>
+                <div data-lang="en" class="hidden"><h3 class="section-title-pro mb-6">Mandatory Verification for Large Volume Trades</h3></div>
+                <p data-lang="ko" class="mb-6 text-gray-600">자금세탁방지(AML) 및 테러자금조달방지(CFT) 규정 준수를 위해, OKX는 대규모 거래 시 아래의 증빙 자료 제출을 의무화하고 있습니다. 관리자가 직접 계좌 잔고나 코인 수량을 대신 확인해 주는 서비스는 제공되지 않으며, 모든 인증은 공식 서류 제출을 통해 이루어집니다.</p>
+                <p data-lang="en" class="hidden" class="mb-6 text-gray-600">To comply with Anti-Money Laundering (AML) and Counter-Terrorist Financing (CFT) regulations, OKX mandates the submission of the following documents for large-scale transactions. Services where an admin directly verifies account balances or coin quantities are not provided; all verification is done through official documentation.</p>
+                <!-- ... (Rest of the content will be translated similarly) ... -->
+                <div class="space-y-6">
+                    <div class="requirement-card p-5 rounded-r-lg">
+                        <h4 class="text-xl font-bold text-blue-800 flex items-center"><i class="fas fa-id-card-alt mr-2"></i>1. 
+                            <span data-lang="ko">강화된 신원 인증 (Enhanced KYC)</span>
+                            <span data-lang="en" class="hidden">Enhanced Know Your Customer (KYC)</span>
+                        </h4>
+                        <p data-lang="ko" class="mt-2 text-blue-700">기본적인 신원 인증(KYC Level 1)을 넘어, 주소 증명 및 추가적인 신원 확인 절차를 완료해야 합니다. 기관의 경우 사업자 등록증, 법인 등기부 등본, 주주 명부 등이 요구됩니다.</p>
+                        <p data-lang="en" class="hidden mt-2 text-blue-700">Beyond basic identity verification (KYC Level 1), you must complete proof of address and additional identity checks. For institutions, documents such as a business registration certificate, corporate registry, and shareholder list are required.</p>
+                    </div>
+                    <div class="requirement-card p-5 rounded-r-lg">
+                         <h4 class="text-xl font-bold text-blue-800 flex items-center"><i class="fas fa-file-invoice-dollar mr-2"></i>2. 
+                            <span data-lang="ko">자금 증명 (Proof of Funds, POF)</span>
+                            <span data-lang="en" class="hidden">Proof of Funds (POF)</span>
+                        </h4>
+                        <p data-lang="ko" class="mt-2 text-blue-700">거래하고자 하는 자금이 본인 소유임을 증명하는 공식 서류입니다. 일반적으로 아래와 같은 자료가 사용됩니다.</p>
+                        <p data-lang="en" class="hidden mt-2 text-blue-700">Official documents proving that the funds you intend to trade with are your own. The following are typically used:</p>
+                        <ul class="list-disc list-inside mt-2 text-sm text-blue-600 space-y-1">
+                            <li>
+                                <b data-lang="ko">개인:</b><b data-lang="en" class="hidden">Individual:</b>
+                                <span data-lang="ko"> 최근 3~6개월간의 은행 거래 내역서, 주식/증권 계좌 잔고 증명서, 암호화폐 거래소 지갑 잔고 스크린샷(서명 인증 포함)</span>
+                                <span data-lang="en" class="hidden"> Bank statements for the last 3-6 months, brokerage account statements, or screenshots of crypto exchange wallet balances (including signature verification).</span>
+                            </li>
+                            <li>
+                                <b data-lang="ko">기관:</b><b data-lang="en" class="hidden">Institution:</b>
+                                <span data-lang="ko"> 회계감사를 받은 재무제표, 법인 명의 은행 계좌 잔고 증명서</span>
+                                <span data-lang="en" class="hidden"> Audited financial statements, corporate bank account statements.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="requirement-card p-5 rounded-r-lg">
+                        <h4 class="text-xl font-bold text-blue-800 flex items-center"><i class="fas fa-landmark mr-2"></i>3. 
+                            <span data-lang="ko">자금 출처 증명 (Proof of Source of Wealth, POSW)</span>
+                            <span data-lang="en" class="hidden">Proof of Source of Wealth (POSW)</span>
+                        </h4>
+                        <p data-lang="ko" class="mt-2 text-blue-700">거래 자금의 합법적인 출처를 증명하는 과정으로, POF보다 더 포괄적인 증빙이 필요합니다.</p>
+                        <p data-lang="en" class="hidden mt-2 text-blue-700">A process to verify the legitimate origin of your trading funds, requiring more comprehensive proof than POF.</p>
+                         <ul class="list-disc list-inside mt-2 text-sm text-blue-600 space-y-1">
+                            <li data-lang="ko">급여 소득: 급여 명세서, 고용 계약서</li><li data-lang="en" class="hidden">Salary Income: Payslips, employment contract.</li>
+                            <li data-lang="ko">사업 소득: 사업체 재무제표, 배당금 지급 증명서</li><li data-lang="en" class="hidden">Business Income: Company financial statements, dividend statements.</li>
+                            <li data-lang="ko">투자 수익: 투자 포트폴리오 수익 보고서, 자산 매각 계약서</li><li data-lang="en" class="hidden">Investment Profits: Investment portfolio reports, asset sale agreements.</li>
+                            <li data-lang="ko">상속/증여: 상속/증여세 납부 확인서, 관련 법률 문서</li><li data-lang="en" class="hidden">Inheritance/Gift: Inheritance/gift tax receipts, relevant legal documents.</li>
+                        </ul>
+                    </div>
+                </div>
+                 <p data-lang="ko" class="mt-6 text-sm text-center text-gray-500">모든 서류는 OKX 컴플라이언스 팀의 검토를 거치며, 추가 자료를 요청받을 수 있습니다.</p>
+                 <p data-lang="en" class="hidden mt-6 text-sm text-center text-gray-500">All documents are subject to review by the OKX compliance team, and additional information may be requested.</p>
+            </section>
+
+             <section id="process-pro" class="mb-12 card p-6">
+                <div data-lang="ko"><h3 class="section-title-pro mb-6">대량 거래(블록딜) 절차</h3></div>
+                <div data-lang="en" class="hidden"><h3 class="section-title-pro mb-6">Block Deal Process</h3></div>
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xl">1</div>
+                        <div class="ml-4">
+                            <div data-lang="ko"><h4 class="text-lg font-semibold">인증 광고주(Verified Advertiser) 신청 또는 접촉</h4></div>
+                            <div data-lang="en" class="hidden"><h4 class="text-lg font-semibold">Apply for or Contact a Verified Advertiser</h4></div>
+                            <p data-lang="ko" class="text-gray-600">OKX P2P 플랫폼 내 'Block Trade' 섹션에서 대량 거래 전문 광고주를 찾거나, 직접 인증 광고주 자격을 획득하여 거래를 개시합니다. 대량 거래는 일반 리스트에 노출되지 않는 경우가 많습니다.</p>
+                            <p data-lang="en" class="hidden" class="text-gray-600">Find a block trade specialist in the 'Block Trade' section of the OKX P2P platform, or become a Verified Advertiser yourself to initiate trades. Large deals are often not listed publicly.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xl">2</div>
+                        <div class="ml-4">
+                            <div data-lang="ko"><h4 class="text-lg font-semibold">거래 조건 협의 (Off-the-Record)</h4></div>
+                            <div data-lang="en" class="hidden"><h4 class="text-lg font-semibold">Negotiate Terms (Off-the-Record)</h4></div>
+                            <p data-lang="ko" class="text-gray-600">거래 가격(프리미엄/디스카운트), 분할 거래 횟수, 결제 수단(은행 송금, SWIFT 등), 에스크로 조건 등 세부 사항을 OKX 채팅 또는 합의된 채널을 통해 협상합니다.</p>
+                            <p data-lang="en" class="hidden" class="text-gray-600">Negotiate details like price (premium/discount), number of tranches, payment method (e.g., SWIFT), and escrow conditions via OKX chat or another agreed-upon channel.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xl">3</div>
+                        <div class="ml-4">
+                            <div data-lang="ko"><h4 class="text-lg font-semibold">OKX 에스크로를 통한 공식 주문 생성</h4></div>
+                            <div data-lang="en" class="hidden"><h4 class="text-lg font-semibold">Create Official Order via OKX Escrow</h4></div>
+                            <p data-lang="ko" class="text-gray-600">협의가 완료되면, 합의된 조건으로 OKX 플랫폼 내에서 공식 P2P 주문을 생성합니다. 판매자는 해당 수량의 BTC를 OKX 에스크로 지갑에 입금해야 주문이 활성화됩니다.</p>
+                            <p data-lang="en" class="hidden" class="text-gray-600">Once terms are agreed upon, create an official P2P order on the OKX platform. The seller must deposit the BTC into the OKX escrow wallet to activate the order.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xl">4</div>
+                        <div class="ml-4">
+                            <div data-lang="ko"><h4 class="text-lg font-semibold">대금 결제 및 증빙 제출</h4></div>
+                            <div data-lang="en" class="hidden"><h4 class="text-lg font-semibold">Submit Payment and Proof</h4></div>
+                            <p data-lang="ko" class="text-gray-600">구매자는 약속된 결제 수단을 통해 판매자에게 대금을 송금합니다. 국제 송금(SWIFT)의 경우 며칠이 소요될 수 있으며, 송금 영수증(MT103 등)을 증빙으로 제출해야 합니다.</p>
+                            <p data-lang="en" class="hidden" class="text-gray-600">The buyer sends the payment via the agreed method. International transfers (SWIFT) may take several days, and proof of transfer (e.g., MT103 receipt) must be submitted.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xl">5</div>
+                        <div class="ml-4">
+                            <div data-lang="ko"><h4 class="text-lg font-semibold">자산 해제 (Crypto Release)</h4></div>
+                            <div data-lang="en" class="hidden"><h4 class="text-lg font-semibold">Crypto Release</h4></div>
+                            <p data-lang="ko" class="text-gray-600">판매자가 최종 입금을 확인하면, OKX 플랫폼에서 '코인 전달(Release)'을 실행합니다. 에스크로에 보관 중이던 BTC가 즉시 구매자의 OKX 계정으로 이전됩니다.</p>
+                            <p data-lang="en" class="hidden" class="text-gray-600">Once the seller confirms payment, they will 'Release' the crypto on the platform. The BTC held in escrow is instantly transferred to the buyer's OKX account.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="safety-tips-pro" class="mb-12">
+                <div data-lang="ko"><h3 class="section-title-pro mb-6">대량 거래를 위한 최고 수준의 보안 수칙</h3></div>
+                <div data-lang="en" class="hidden"><h3 class="section-title-pro mb-6">Top-Level Security Measures for Large Volume Trades</h3></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="warning-card p-4 rounded-r-lg">
+                        <h4 class="font-bold text-amber-800 flex items-center"><i class="fas fa-user-secret mr-2"></i>
+                            <span data-lang="ko">거래 상대방 실사</span><span data-lang="en" class="hidden">Counterparty Due Diligence</span>
+                        </h4>
+                        <p data-lang="ko" class="text-sm text-amber-700 mt-1">OKX 인증 광고주라도 거래 전 평판, 과거 거래 이력 등을 철저히 확인하세요. 기관의 경우, 상대 기관에 대한 기본적인 실사를 수행하는 것이 안전합니다.</p>
+                        <p data-lang="en" class="hidden" class="text-sm text-amber-700 mt-1">Even with Verified Advertisers, thoroughly check their reputation and transaction history. For institutions, performing basic due diligence on the counterparty is recommended.</p>
+                    </div>
+                     <div class="warning-card p-4 rounded-r-lg">
+                        <h4 class="font-bold text-amber-800 flex items-center"><i class="fas fa-comments-dollar mr-2"></i>
+                            <span data-lang="ko">소통 채널 보안</span><span data-lang="en" class="hidden">Secure Communication Channels</span>
+                        </h4>
+                        <p data-lang="ko" class="text-sm text-amber-700 mt-1">모든 공식적인 소통은 OKX 플랫폼 내 암호화된 채팅을 이용하세요. 외부 메신저를 사용하더라도, 최종 합의 및 증빙은 반드시 플랫폼 내에 기록으로 남겨야 합니다.</p>
+                        <p data-lang="en" class="hidden" class="text-sm text-amber-700 mt-1">Use the encrypted chat on the OKX platform for all official communication. If using external messengers, ensure final agreements and proofs are recorded on the platform.</p>
+                    </div>
+                    <div class="warning-card p-4 rounded-r-lg">
+                        <h4 class="font-bold text-amber-800 flex items-center"><i class="fas fa-random mr-2"></i>
+                            <span data-lang="ko">분할 거래 (Tranche) 고려</span><span data-lang="en" class="hidden">Consider Trading in Tranches</span>
+                        </h4>
+                        <p data-lang="ko" class="text-sm text-amber-700 mt-1">30,000 BTC와 같은 초거대 물량은 리스크 관리를 위해 여러 차례에 걸쳐 분할 거래(예: 5,000 BTC씩 6회)하는 방안을 상대방과 협의하세요.</p>
+                        <p data-lang-en" class="hidden" class="text-sm text-amber-700 mt-1">For very large amounts like 30,000 BTC, negotiate with the counterparty to trade in smaller tranches (e.g., 6 trades of 5,000 BTC each) to manage risk.</p>
+                    </div>
+                    <div class="warning-card p-4 rounded-r-lg">
+                        <h4 class="font-bold text-amber-800 flex items-center"><i class="fas fa-university mr-2"></i>
+                            <span data-lang="ko">은행 및 규제 문제 사전 확인</span><span data-lang-en" class="hidden">Pre-check Banking & Regulatory Issues</span>
+                        </h4>
+                        <p data-lang="ko" class="text-sm text-amber-700 mt-1">거래에 사용할 은행의 일일/건당 송금 한도와 국제 송금 규제를 사전에 확인하세요. 대규모 자금 이동은 은행의 내부 AML 모니터링에 의해 지연되거나 거부될 수 있습니다.</p>
+                        <p data-lang="en" class="hidden" class="text-sm text-amber-700 mt-1">Verify your bank's daily/per-transaction transfer limits and international wire regulations beforehand. Large fund movements can be delayed or blocked by a bank's internal AML monitoring.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <section id="official-links" class="mb-12 card p-6">
+            <div data-lang="ko"><h3 class="section-title mb-6">공식 매뉴얼 및 자료 링크</h3></div>
+            <div data-lang="en" class="hidden"><h3 class="section-title mb-6">Official Manuals & Resources</h3></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <a href="https://www.okx.com/p2p-markets" target="_blank" class="card p-4 flex items-center space-x-3 hover:bg-slate-50 transition-colors">
+                    <i class="fas fa-store text-2xl text-blue-600"></i>
+                    <div>
+                        <h4 data-lang="ko" class="font-bold">P2P 공식 마켓</h4><h4 data-lang="en" class="hidden font-bold">Official P2P Market</h4>
+                        <p data-lang="ko" class="text-sm text-gray-500">실시간 거래 시작</p><p data-lang="en" class="hidden text-sm text-gray-500">Start trading now</p>
+                    </div>
+                </a>
+                <a href="https://www.okx.com/p2p/guide" target="_blank" class="card p-4 flex items-center space-x-3 hover:bg-slate-50 transition-colors">
+                    <i class="fas fa-book-open text-2xl text-blue-600"></i>
+                    <div>
+                        <h4 data-lang="ko" class="font-bold">P2P 서비스 가이드</h4><h4 data-lang="en" class="hidden font-bold">P2P Service Guide</h4>
+                        <p data-lang="ko" class="text-sm text-gray-500">공식 사용자 매뉴얼</p><p data-lang="en" class="hidden text-sm text-gray-500">Official user manual</p>
+                    </div>
+                </a>
+                <a href="https://www.okx.com/help/okx-p2p-general-trading-guidelines" target="_blank" class="card p-4 flex items-center space-x-3 hover:bg-slate-50 transition-colors">
+                    <i class="fas fa-gavel text-2xl text-blue-600"></i>
+                    <div>
+                        <h4 data-lang="ko" class="font-bold">공식 거래 규정/FAQ</h4><h4 data-lang="en" class="hidden font-bold">Official Trading Rules/FAQ</h4>
+                        <p data-lang="ko" class="text-sm text-gray-500">가이드라인 및 규칙</p><p data-lang="en" class="hidden text-sm text-gray-500">Guidelines and rules</p>
+                    </div>
+                </a>
+                <a href="https://www.okx.com/help" target="_blank" class="card p-4 flex items-center space-x-3 hover:bg-slate-50 transition-colors">
+                    <i class="fas fa-question-circle text-2xl text-blue-600"></i>
+                    <div>
+                        <h4 data-lang="ko" class="font-bold">고객센터</h4><h4 data-lang="en" class="hidden font-bold">Help Center</h4>
+                        <p data-lang="ko" class="text-sm text-gray-500">도움말 및 문의</p><p data-lang="en" class="hidden text-sm text-gray-500">Help and support</p>
+                    </div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=-ohizpWoaJo" target="_blank" class="card p-4 flex items-center space-x-3 hover:bg-slate-50 transition-colors">
+                    <i class="fab fa-youtube text-2xl text-red-600"></i>
+                     <div>
+                        <h4 data-lang="ko" class="font-bold">P2P 거래 사용법 (영상)</h4><h4 data-lang="en" class="hidden font-bold">How to Trade P2P (Video)</h4>
+                        <p data-lang="ko" class="text-sm text-gray-500">공식 유튜브 튜토리얼</p><p data-lang="en" class="hidden text-sm text-gray-500">Official YouTube tutorial</p>
+                    </div>
+                </a>
+                 <a href="https://www.youtube.com/playlist?list=PLXP-1T_5N8mYVf_IQ2xg_Dx4NeYz3DZqt" target="_blank" class="card p-4 flex items-center space-x-3 hover:bg-slate-50 transition-colors">
+                    <i class="fab fa-youtube text-2xl text-red-600"></i>
+                     <div>
+                        <h4 data-lang="ko" class="font-bold">P2P 튜토리얼 재생목록</h4><h4 data-lang="en" class="hidden font-bold">P2P Tutorials Playlist</h4>
+                        <p data-lang="ko" class="text-sm text-gray-500">관련 영상 모두 보기</p><p data-lang="en" class="hidden text-sm text-gray-500">Watch all related videos</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center p-6 mt-12">
+        <div class="container mx-auto max-w-5xl">
+            <div data-lang="ko">
+                <p>&copy; 2024 OKX P2P Comprehensive Guide. All Rights Reserved.</p>
+                <p class="text-xs text-gray-400 mt-2">본 문서는 정보 제공을 목적으로 하며, 투자 자문이나 법률 자문이 아닙니다. 모든 거래의 최종 결정과 책임은 거래 당사자에게 있습니다.</p>
+            </div>
+            <div data-lang="en" class="hidden">
+                <p>&copy; 2024 OKX P2P Comprehensive Guide. All Rights Reserved.</p>
+                <p class="text-xs text-gray-400 mt-2">This document is for informational purposes only and does not constitute investment or legal advice. The final decision and responsibility for all transactions rest with the parties involved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const btnKo = document.getElementById('btn-ko');
+        const btnEn = document.getElementById('btn-en');
+        const elementsKo = document.querySelectorAll('[data-lang="ko"]');
+        const elementsEn = document.querySelectorAll('[data-lang="en"]');
+
+        function setLanguage(lang) {
+            if (lang === 'ko') {
+                btnKo.classList.add('active');
+                btnEn.classList.remove('active');
+                elementsKo.forEach(el => el.classList.remove('hidden'));
+                elementsEn.forEach(el => el.classList.add('hidden'));
+                document.documentElement.lang = 'ko';
+            } else {
+                btnEn.classList.add('active');
+                btnKo.classList.remove('active');
+                elementsEn.forEach(el => el.classList.remove('hidden'));
+                elementsKo.forEach(el => el.classList.add('hidden'));
+                 document.documentElement.lang = 'en';
+            }
+        }
+
+        btnKo.addEventListener('click', () => setLanguage('ko'));
+        btnEn.addEventListener('click', () => setLanguage('en'));
+
+        // Set initial language
+        setLanguage('ko');
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+

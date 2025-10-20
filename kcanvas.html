@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-CANVAS: 전략적 성장 청사진</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+            color: #212529;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background-color: #000;
+            color: white;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        header p {
+            font-size: 1.25rem;
+            margin-top: 10px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #e0e0e0;
+        }
+        .hero-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 14px 16px 14px 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+        .card img {
+            width: 100%;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        .market-stats {
+            background-color: #e9ecef;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .market-stats p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        .market-stats strong {
+            font-size: 1.5rem;
+            color: #0d254c; /* 진한 남색으로 변경 */
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .card .success {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .card .failure {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .text-red {
+            color: #dc3545; /* 붉은색 클래스 추가 */
+        }
+        .info-label {
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 0;
+            margin-bottom: 2px;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+        .label-success {
+             background-color: #eaf6ec;
+             color: #28a745;
+        }
+        .label-failure {
+            background-color: #fbe9e9;
+            color: #dc3545;
+        }
+
+        /* 인포그래픽 섹션 스타일 */
+        .infographic-section {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .infographic-item {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            gap: 20px;
+        }
+        .infographic-item img {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 6px;
+            object-fit: cover;
+        }
+        .infographic-text h3 {
+            margin-top: 0;
+            font-size: 1.6rem;
+            color: #007bff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px 15px;
+            vertical-align: top;
+        }
+        th {
+            background-color: #f1f3f5;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center; /* 타이틀 가운데 정렬 */
+        }
+        td {
+            font-size: 1rem;
+            text-align: left; /* 내용은 왼쪽 정렬 유지 */
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        .highlight-blue {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .highlight-red {
+            font-weight: bold;
+            color: #dc3545;
+        }
+        .highlight-green {
+            font-weight: bold;
+            color: #28a745;
+        }
+        .recommendations ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .recommendations li {
+            background-color: #fff;
+            border-left: 5px solid #007bff;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            font-size: 1.1rem;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            background-color: #343a40;
+            color: #f8f9fa;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .grid-2, .infographic-item {
+                grid-template-columns: 1fr;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>The World's Canvas: K-CANVAS</h1>
+            <p>
+                K-Display 인프라(스마트 TV, 스마트폰, 디지털 사이니지)를
+                세계 최대의 통합 디지털 아트 캔버스로 전환
+            </p>
+        </div>
+    </header>
+
+    <main class="container">
+        
+    <img src="Kcanvas_img/케데현 이미지.jpg" alt="현대적인 디지털 호랑이 아트워크" class="hero-image">
+
+        <section id="opportunity">
+            <h2>우리의 캔버스: 3대 핵심 인프라</h2>
+            <div class="infographic-section">
+                <div class="infographic-item">
+                    <img src="Kcanvas_img/lg겔러리구독.jpeg" alt="TV에 전시된 반 고흐의 '밀밭'">
+                    <div class="infographic-text">
+                        <h3>1. 거실의 캔버스 (Smart TV)</h3>
+                        <p>삼성전자와 LG전자가 보급한 활성 스마트 TV <strong class="highlight-blue">1억 5천만 대 이상</strong> 프리미엄 아트 경험을 제공할 거대한 '거실의 캔버스' 시장이 이미 형성되어 있습니다.</p>
+                    </div>
+                </div>
+                <div class="infographic-item">
+                    <img src="Kcanvas_img/digi art nft 사례.png" alt="NFT 구매 및 판매 메뉴">
+                    <div class="infographic-text">
+                        <h3>2. 개인의 캔버스 (Smartphone)</h3>
+                        <p>삼성전자의 글로벌 스마트폰 사용자 기반 약 <strong class="highlight-blue">10억 3,300만 명</strong> 이는 대규모 사용자 확보, NFT 거래, 커뮤니티 활성화를 위한 핵심 '생태계의 관문'입니다.</p>
+                    </div>
+                </div>
+                <div class="infographic-item">
+                    <img src="Kcanvas_img/디스트릭트 인피니트월.png" alt="건물 로비의 대형 미디어 월에 폭포가 쏟아지는 d'strict 작품">
+                    <div class="infographic-text">
+                        <h3>3. 공공의 캔버스 (Digital Signage)</h3>
+                        <p>삼성이 <strong class="highlight-blue">시장 점유율 33%</strong>로 독점적 지위를 가진 시장입니다. K-ART와 스타 작가를 대중에게 각인시킬 강력한 마케팅 '플라이휠' 역할을 합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="market">
+            <h2>시장 동향: '포스트-하이프'와 진입 시점</h2>
+            <div class="market-stats">
+                <p>NFT 시장은 2022년 $15.8억 달러의 최고 수익 후 조정을 거쳤습니다.</p>
+                <p>현재 연간 <strong>6억 ~ 7억 달러</strong> 규모로 안정화되었으며, 투기 수요가 아닌 진정한 가치 기반의 지속 가능한 시장이 형성되고 있습니다.</p>
+                <p>향후 <strong>연평균 성장률(CAGR) 30% 이상</strong>의 강력한 성장이 예측되어, 지금이 이상적인 진입 시점입니다.</p>
+            </div>
+        </section>
+
+        <section id="competitors">
+            <h2>경쟁 분석: 명확한 '기회의 격차'</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <img src="Kcanvas_img/삼성 디지아트 겔러리.png" alt="삼성 TV 속 나만의 아트 갤러리">
+                    <h3>삼성 아트 스토어</h3>
+                    <p><span class="info-label label-success">증명한 것</span><br>
+                        'TV를 예술 작품처럼 감상'하는 구독 모델의 시장성을 증명했습니다. 월 $4.99의 구독료가 시장에 수용될 수 있음을 보여주며 TV의 유휴 시간을 수익화하는 데 성공했습니다.</p>
+                    <p><span class="info-label label-failure">구현 안된 것</span><br>
+                        사용자를 수동적인 '구독자'로만 한정시켜 '참여의 격차'를 만들었습니다. 작품을 소유, 거래하거나 아티스트와 소통하는 기능이 없어 더 깊은 참여를 원하는 사용자 욕구를 간과했습니다.</p>
+                </div>
+                <div class="card">
+                    <img src="Kcanvas_img/digi art nft 사례.png" alt="NFT 아트 거래 예시">
+                    <h3>LG 아트랩</h3>
+                    <p><span class="info-label label-success">증명한 것</span><br>
+                        TV에서 직접 NFT를 거래하는 기술적 시도를 통해 '소유 가능한 디지털 아트'에 대한 참여 경험의 기술적 가능성을 보여주었습니다.</p>
+                    <p><span class="info-label label-failure">구현 안된 것</span><br>
+                        기술 구현에만 집중한 나머지 매력적인 콘텐츠와 커뮤니티 부재로 사용자 유인에 실패했습니다. 또한, 자체 블록체인(헤데라)을 사용하여 주류 NFT 시장과의 호환성 및 접근성을 제한하는 결과를 낳았습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="solution-table">
+            <h2>K-CANVAS의 해답: 하이브리드 생태계</h2>
+            <p>삼성은 '감상'을, LG는 '소유'를 시도했지만, K-CANVAS는 '감상 + 소유 + 참여'를 모두 통합합니다.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>구분</th>
+                        <th>삼성 아트 스토어</th>
+                        <th>LG 아트랩 (실패 분석)</th>
+                        <th class="highlight-blue">K-CANVAS (목표)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>핵심 가치 제안</strong></td>
+                        <td>TV를 인테리어 소품으로 (명화 감상)</td>
+                        <td>TV에서 NFT 직접 거래 (기술적 시도)</td>
+                        <td class="highlight-blue">모든 스크린을 살아있는 캔버스로 (생태계 참여)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>비즈니스 모델</strong></td>
+                        <td>월 구독료 (감상)</td>
+                        <td>거래 수수료 (소유)</td>
+                        <td class="highlight-blue">구독 + 거래 + B2B (하이브리드)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>콘텐츠 초점</strong></td>
+                        <td>박물관 명화 중심 (보수적)</td>
+                        <td>일부 유명 디지털 아티스트 (제한적)</td>
+                        <td class="highlight-blue">K-POP IP, 신진 K-ART 작가, 제너레이티브 아트 (다양성/역동성)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>소유권 모델</strong></td>
+                        <td>없음 (대여)</td>
+                        <td>NFT 기반 영구 소유</td>
+                        <td class="highlight-blue">구독(감상)과 NFT(소유) 선택 가능</td>
+                    </tr>
+                    <tr>
+                        <td><strong>커뮤니티 기능</strong></td>
+                        <td>없음</td>
+                        <td>없음</td>
+                        <td class="highlight-blue">아티스트-팬 소통, DAO, 소셜 큐레이션</td>
+                    </tr>
+                    <tr>
+                        <td><strong>기회 격차</strong></td>
+                        <td class="highlight-red">참여의 부재 (Passive User)</td>
+                        <td class="highlight-red">생태계의 부재 (Content-less Tech)</td>
+                        <td class="highlight-green">'감상', '소유', '참여'의 통합</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="core-strategies">
+            <h2>핵심 성장 전략 3가지</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <img src="Kcanvas_img/케데현 이미지3.jpg" alt="한국 전통 민화 호랑이 그림">
+                    <h3>1. K-POP '트로이 목마' 전략</h3>
+                    <p>글로벌 K-POP 팬덤을 활용해 플랫폼 '콜드 스타트' 문제를 해결합니다. 독점 K-POP 아트 NFT 론칭은 경쟁사가 모방할 수 없는 강력한 사용자 확보 수단입니다.</p>
+                </div>
+                <div class="card">
+                    <img src="Kcanvas_img/현대백화점_옥외광고.png" alt="현대백화점 외벽의 대형 사이니지 광고">
+                    <h3>2. 'K-CANVAS Prize' (시장 창조)</h3>
+                    <p>단순 플랫폼을 넘어, 권위 있는 글로벌 디지털 아트 어워드를 창설합니다. 이를 통해 신진 작가를 발굴하고 시장의 표준을 제시하는 기관으로 자리매김합니다.</p>
+                </div>
+                <div class="card">
+                    <img src="Kcanvas_img/B2B2C.png" alt="B2B2C 파트너십 인포그래픽">
+                    <h3>3. B2B2C 파트너십 (스마트 솔루션)</h3>
+                    <p>LG의 실패 사례를 교훈 삼아, K-CANVAS를 하드웨어 제조사가 구축하기 어려운 '전문 아트 생태계 솔루션'으로 제안합니다. '스포티파이-플레이스테이션' 모델과 같습니다.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="recommendations" class="recommendations">
+            <h2>5대 핵심 전략 권고</h2>
+            <ul>
+                <li><strong>권고 1: B2B2C 파트너십 우선 추진</strong><br>
+                    자체 플랫폼(아트랩) 실패 경험이 있는 LG전자를 1차 목표 파트너로 설정하고, '리스크 없는 전문 솔루션'으로 접근해야 합니다.
+                </li>
+                <li><strong>권고 2: K-POP '트로이 목마' 정밀 실행</strong><br>
+                    플랫폼 론칭 전, 글로벌 팬덤을 갖춘 탑티어 K-POP 그룹과의 독점 파트너십을 반드시 확보해야 합니다.
+                </li>
+                <li><strong>권고 3: 'K-CANVAS Prize' 공신력 확보</strong><br>
+                    권위 있는 국내외 인사들로 구성된 독립적인 큐레이션 위원회를 조속히 구성하여, 시장을 선도하는 '마켓 리더'로 포지셔닝해야 합니다.
+                </li>
+                <li><strong>권고 4: 모바일(허브)과 TV(캔버스)의 역할 분리</strong><br>
+                    모바일 앱은 '거래 및 커뮤니티 허브'로, 스마트 TV 앱은 몰입감 있는 '감상용 프리미엄 캔버스'로 역할을 명확히 구분하여 개발해야 합니다.
+                </li>
+                <li><strong>권고 5: OS 비종속적 기술 로드맵 채택</strong><br>
+                    초기에는 삼성(타이젠)과 LG(웹OS)에 집중하되, 장기적으로는 안드로이드 TV로 확장을 포함한 OS 비종속적 로드맵을 수립해야 합니다.
+                </li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 K-CANVAS Project Analysis</p>
+    </footer>
+
+</body>
+</html>

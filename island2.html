@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대부도 사업계획 | (주)휴먼파크</title>
+    <meta name="description" content="경기도 안산시 대부북동 리조트 개발 사업계획서 웹 프레젠테이션">
+    <style>
+        /* [천재 아이디어 9] 내장 CSS */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            overflow: hidden; /* 스크롤바 숨기기 */
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        main {
+            /* [천재 아이디어 8] 'Reveal.js' 스타일 에뮬레이션 (세로 스크롤 스냅) */
+            scroll-snap-type: y mandatory;
+            height: 100vh;
+            overflow-y: scroll;
+        }
+
+        section {
+            height: 100vh;
+            width: 100vw;
+            scroll-snap-align: start;
+            padding: 3.5rem;
+            box-sizing: border-box;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            position: relative;
+        }
+
+        /* 슬라이드 템플릿 */
+        h1, h2, h3 {
+            color: #111;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            border-bottom: 3px solid #007aff;
+            padding-bottom: 15px;
+            margin-bottom: 2rem;
+            align-self: flex-start;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: #0056b3;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            line-height: 1.7;
+            font-size: 1.1rem;
+            max-width: 960px;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 80vh; /* 이미지가 슬라이드를 넘어가지 않게 */
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        }
+
+        /* [천재 아이디어 11] 동적 도식화 (테이블) */
+        table {
+            width: 90%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f9f9f9;
+            font-weight: 700;
+            color: #000;
+            width: 25%;
+        }
+        
+        td {
+            background-color: #fff;
+        }
+
+        /* [천재 아이디어 10] 인터랙티브 콘텐츠 (details) */
+        details {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 8px;
+            width: 80%;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.25rem;
+            color: #0056b3;
+        }
+
+        /* [천재 아이디어 12] 지능형 레이아웃 */
+        #cover {
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('리조트 투시도 (사업계획 표지 이미지).png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            justify-content: center;
+            text-align: center;
+        }
+        #cover h1 {
+            color: white;
+            border: none;
+            font-size: 4.5rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+        #cover p {
+            font-size: 1.75rem;
+            font-weight: 300;
+        }
+
+        .content-box {
+            width: 100%;
+            max-width: 1200px;
+            padding: 2rem;
+            box-sizing: border-box;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .image-slide {
+            padding: 2rem;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f2f5;
+        }
+        .image-slide h2 {
+            position: absolute;
+            top: 3.5rem;
+            left: 3.5rem;
+            background-color: rgba(255,255,255,0.8);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            z-index: 10;
+        }
+
+        /* 2단 분할 레이아웃 */
+        .two-column {
+            display: flex;
+            flex-direction: row;
+            gap: 2rem;
+            align-items: flex-start;
+            width: 100%;
+            height: 100%;
+        }
+        .two-column > div {
+            flex: 1;
+            overflow-y: auto;
+        }
+        .two-column > div:first-child {
+            flex-basis: 60%;
+        }
+        .two-column > div:last-child {
+            flex-basis: 40%;
+        }
+
+        /* 지도 iframe */
+        iframe {
+            width: 100%;
+            height: 75vh;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        }
+
+        /* 마지막 슬라이드 */
+        #final-slide {
+            background-color: #0056b3;
+            color: white;
+            text-align: center;
+        }
+        #final-slide h1 {
+            color: white;
+            border: none;
+        }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            section { padding: 1.5rem; }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+            #cover h1 { font-size: 3rem; }
+            #cover p { font-size: 1.2rem; }
+            
+            .two-column { flex-direction: column; }
+            .content-box { padding: 1rem; }
+            
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px; }
+
+            .image-slide h2 {
+                top: 1.5rem;
+                left: 1.5rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        
+        <section id="cover">
+            [cite_start]<h1>대부도 사업계획 [cite: 115]</h1>
+            [cite_start]<p>주식회사 휴먼파크 [cite: 116]</p>
+        </section>
+
+        <section id="location-wide" class="image-slide">
+            <h2>사업지 광역 위치도</h2>
+            <img src="사업지 위치도(수도권 광역 지도).png" alt="사업지 위치도">
+        </section>
+
+        <section id="location-context">
+            <div class="content-box">
+                [cite_start]<h2>주변 권역 [cite: 125]</h2>
+                <p>본 사업지는 수도권 및 주요 거점과의 접근성이 뛰어난 위치에 있습니다.</p>
+                
+                <div class="concept-map" style="display: flex; justify-content: center; align-items: center; gap: 1.5rem; padding: 2rem; flex-wrap: wrap; text-align: center;">
+                    <div class="center-node" style="background: #007aff; color: white; padding: 2rem; border-radius: 50%; width: 150px; height: 150px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold;">사업지<br>(대부도)</div>
+                    [cite_start]<div class="leaf-node" style="background: #f0f0f0; border: 2px solid #007aff; color: #333; padding: 1rem 1.5rem; border-radius: 10px;">인천국제공항 [cite: 126]</div>
+                    [cite_start]<div class="leaf-node" style="background: #f0f0f0; border: 2px solid #007aff; color: #333; padding: 1rem 1.5rem; border-radius: 10px;">송도 [cite: 126]</div>
+                    [cite_start]<div class="leaf-node" style="background: #f0f0f0; border: 2px solid #007aff; color: #333; padding: 1rem 1.5rem; border-radius: 10px;">전곡항 [cite: 126]</div>
+                    [cite_start]<div class="leaf-node" style="background: #f0f0f0; border: 2px solid #007aff; color: #333; padding: 1rem 1.5rem; border-radius: 10px;">제부도 [cite: 126]</div>
+                    [cite_start]<div class="leaf-node" style="background: #f0f0f0; border: 2px solid #007aff; color: #333; padding: 1rem 1.5rem; border-radius: 10px;">수도권 / 중국 / 일본 [cite: 126]</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="location-interactive">
+            <div class="content-box">
+                <h2>사업지 실시간 위치 (대부북동 산 18-1)</h2>
+                <p>요청하신 실시간 지도입니다. 인터넷 연결 시 Google Maps를 통해 위치를 확인할 수 있습니다. [cite_start](주소: 경기도 안산시 단원구 대부북동 산 18-1 [cite: 1])</p>
+                <iframe 
+                    src="https://www.google.com/maps?q=경기도+안산시+단원구+대부북동+산+18-1&output=embed&t=k"
+                    loading="lazy">
+                </iframe>
+            </div>
+        </section>
+
+        <section id="location-dev" class="image-slide">
+            [cite_start]<h2>대부도 주변 개발 계획 [cite: 210]</h2>
+            <img src="대부도 개발 계획도 (주변 개발 현황).png" alt="대부도 개발 계획도">
+        </section>
+
+        <section id="partner">
+            <div class="content-box">
+                [cite_start]<h2>시공 참여 의향서 [cite: 172]</h2>
+                [cite_start]<p>본 사업은 (주)원플러스종합건설의 시공 참여 의향을 바탕으로 추진됩니다. [cite: 165, 189]</p>
+                
+                [cite_start]<h3>참여 조건 (요약) [cite: 182-185]</h3>
+                <ul>
+                    [cite_start]<li>사업부지 토지확보 및 명도 등 사업 진행에 문제가 없을 경우 [cite: 183]</li>
+                    [cite_start]<li>적법한 절차에 따른 인허가 및 금융 조건, 분양성 확보 시 [cite: 184]</li>
+                    [cite_start]<li>공사도급금액은 최종 인허가에 따라 추후 협의 [cite: 185]</li>
+                    [cite_start]<li>공동도급방식으로 공사 자금 확보 시 **책임 준공** [cite: 185]</li>
+                </ul>
+                [cite_start]<p style="font-size: 0.9rem; color: #666;">* 본 의향서는 법적 구속력을 갖지 않으며, 발행일로부터 3개월간 유효함 (2016. 06. 24. 기준) [cite: 168, 187, 188]</p>
+            </div>
+        </section>
+
+        <section id="overview">
+            <div class="content-box">
+                [cite_start]<h2>사업 개요 (시공사 제안 기준) [cite: 176]</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>사업명</th>
+                            [cite_start]<td>경기도 안산시 단원구 관광·숙박·판매·유락 근생 신축공사 [cite: 177]</td>
+                        </tr>
+                        <tr>
+                            <th>위치</th>
+                            [cite_start]<td>경기도 안산시 단원구 대부북동 산18-1 외 다수필지 [cite: 178]</td>
+                        </tr>
+                        <tr>
+                            <th>부지면적</th>
+                            [cite_start]<td>41,200㎡ (12,463평) [cite: 179]</td>
+                        </tr>
+                        <tr>
+                            <th>연면적</th>
+                            [cite_start]<td>99,921.665㎡ (30,226.30평) [cite: 180]</td>
+                        </tr>
+                        <tr>
+                            <th>용도 및 규모</th>
+                            [cite_start]<td>관광·숙박·판매·유락근생시설 [cite: 181]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="land-info-1">
+            <div class="content-box">
+                <h2>토지이용계획 ① (산 18-1)</h2>
+                [cite_start]<h3>경기도 안산시 단원구 대부북동 산 18-1 [cite: 1]</h3>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>소재지</th>
+                            [cite_start]<td>경기도 안산시 단원구 대부북동 산 18-1번지 [cite: 1]</td>
+                        </tr>
+                        <tr>
+                            <th>지목 / 면적</th>
+                            [cite_start]<td>임야 / 17,734 ㎡ [cite: 1]</td>
+                        </tr>
+                        <tr>
+                            <th>개별공시지가</th>
+                            [cite_start]<td>189,400원/㎡ (2025/01 기준) [cite: 1]</td>
+                        </tr>
+                        <tr>
+                            <th>국토의 계획 및 이용</th>
+                            [cite_start]<td>도시지역, 자연녹지지역 [cite: 1]</td>
+                        </tr>
+                        <tr>
+                            <th>다른 법령 등</th>
+                            <td>
+                                [cite_start]대기관리권역, 도시교통정비지역, 준보전산지, 생활소음진동관리지역, 성장관리권역, 중점경관관리구역, 토지거래계약에 관한허가구역 [cite: 1]
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <section id="land-info-2">
+            <div class="content-box">
+                <h2>토지이용계획 ② (산 290-6)</h2>
+                [cite_start]<h3>경기도 안산시 단원구 대부북동 산 290-6 [cite: 44]</h3>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>소재지</th>
+                            [cite_start]<td>경기도 안산시 단원구 대부북동 산 290-6번지 [cite: 44]</td>
+                        </tr>
+                        <tr>
+                            <th>지목 / 면적</th>
+                            [cite_start]<td>임야 / 1,725 ㎡ [cite: 44, 46]</td>
+                        </tr>
+                        <tr>
+                            <th>개별공시지가</th>
+                            [cite_start]<td>24,700원/㎡ (2025/01 기준) [cite: 47]</td>
+                        </tr>
+                        <tr>
+                            <th>국토의 계획 및 이용</th>
+                            [cite_start]<td>도시지역, 보전녹지지역 [cite: 49]</td>
+                        </tr>
+                        <tr>
+                            <th>다른 법령 등</th>
+                            <td>
+                                [cite_start]대기관리권역, 도시교통정비지역, 공익용산지, 보전산지, 생활소음진동관리지역, 성장관리권역, 토지거래계약에 관한허가구역 [cite: 58, 63]
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <section id="land-list">
+            <div class="content-box" style="overflow-y: auto;">
+                [cite_start]<h2>전체 토지 내역 [cite: 233]</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>구분</th>
+                            <th>지번</th>
+                            <th>지목</th>
+                            <th>면적(㎡/평)</th>
+                            <th>용도지역</th>
+                            <th>비고</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            [cite_start]<td rowspan="4">매입대상토지 [cite: 236]</td>
+                            [cite_start]<td>산18-1 [cite: 237]</td>
+                            [cite_start]<td>임야 [cite: 238]</td>
+                            [cite_start]<td>17,734 / 5,364 [cite: 242]</td>
+                            [cite_start]<td>자연녹지 [cite: 243]</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            [cite_start]<td>산89-2 [cite: 237]</td>
+                            [cite_start]<td>임야 [cite: 238]</td>
+                            [cite_start]<td>55,041 / 16,650 [cite: 242]</td>
+                            [cite_start]<td>일부 자연녹지, 보존녹지 [cite: 246]</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            [cite_start]<td>산283 [cite: 237]</td>
+                            [cite_start]<td>임야 [cite: 244]</td>
+                            [cite_start]<td>9,421 / 2,850 [cite: 245]</td>
+                            [cite_start]<td>보존녹지 [cite: 246]</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>소계</td>
+                            [cite_start]<td colspan="2">82,196 / 24,864 [cite: 248]</td>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            [cite_start]<td rowspan="5">공동개발 또는<br>매입계획 토지 [cite: 255]</td>
+                            [cite_start]<td>1849-3 [cite: 247]</td>
+                            [cite_start]<td>전 [cite: 250]</td>
+                            [cite_start]<td>12,682 / 3,836 [cite: 251]</td>
+                            [cite_start]<td>자연녹지 [cite: 252]</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            [cite_start]<td>1849-4 [cite: 249]</td>
+                            [cite_start]<td>전 [cite: 250]</td>
+                            [cite_start]<td>615 / 186 [cite: 253]</td>
+                            [cite_start]<td>자연녹지 [cite: 254]</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            [cite_start]<td>1849-15 [cite: 256]</td>
+                            [cite_start]<td>전 [cite: 257]</td>
+                            [cite_start]<td>1,140 / 345 [cite: 258]</td>
+                            [cite_start]<td>자연녹지 [cite: 259]</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            [cite_start]<td>산18-9 [cite: 260]</td>
+                            [cite_start]<td>임야 [cite: 261]</td>
+                            [cite_start]<td>175 / 53 [cite: 262]</td>
+                            [cite_start]<td>자연녹지 [cite: 263]</td>
+                            [cite_start]<td>건물1동 소재 [cite: 266]</td>
+                        </tr>
+                        <tr>
+                            <td>소계</td>
+                            [cite_start]<td colspan="2">14,612 / 4,420 [cite: 265]</td>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><b>합계</b></td>
+                            [cite_start]<td colspan="2"><b>96,808 / 29,284</b> [cite: 267, 268]</td>
+                            <td colspan="2"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="notes">
+            <div class="content-box">
+                [cite_start]<h2>특기사항 (토지 확보 방안) [cite: 213, 217]</h2>
+                [cite_start]<p>본 사업부지는 과거 소유권자 관련 탈/불법사건에 휘말렸으나, 2016.4.12.까지 소송을 거쳐 승소 완결되었습니다. [cite: 218, 219]</p>
+                
+                [cite_start]<h3>후속 처리 절차 [cite: 220]</h3>
+                <ol>
+                    [cite_start]<li>신규 이사진 선임 및 주무관청의 승인 [cite: 221]</li>
+                    [cite_start]<li>토지매매에 관한 이사회 결의 및 주무관청의 허가 또는 신고 [cite: 222]</li>
+                </ol>
+
+                [cite_start]<h3>계약 방식 [cite: 227]</h3>
+                [cite_start]<p>위 후속처리가 완료되면 토지가격 상승 및 경쟁자 증가가 예상됨에 따라 [cite: 225, 226][cite_start], 신임이사장 내정자와 우선 계약을 체결하고 계약금 일부를 지급하였습니다. [cite: 228]</p>
+                <ul>
+                    [cite_start]<li>계약금 잔액 지불과 동시에 부동산 인도 및 토지사용승낙서 교부 예정 [cite: 230]</li>
+                    [cite_start]<li>중도금 및 잔금 지불을 위한 담보제공 약속 (계약서 명시) [cite: 231]</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="dev-direction">
+            <div class="content-box">
+                [cite_start]<h2>개발 방향 [cite: 269]</h2>
+                <p>사업 추진을 위한 세 가지 주요 시나리오입니다.</p>
+
+                <details>
+                    [cite_start]<summary>제1안 : 리조트 PF 개발 [cite: 270, 278]</summary>
+                    [cite_start]<p>산18-1번지 일원 11,739평에 대부도 최고의 리조트 건설 사업계획을 수립하여 신탁사, 시공사 등과 연계한 **PF자금**으로 개발합니다. [cite: 278] [cite_start]안산시, 경기도 등과 협력하여 대부도 개발의 선도주자 사업으로 추진하며, 특히 **중국 관광객 및 투자자 유치**에 집중합니다. [cite: 279, 280]</p>
+                </details>
+
+                <details>
+                    [cite_start]<summary>제2안 : 토지 분양 (매각) [cite: 271, 281]</summary>
+                    [cite_start]<p>토지 전부(약 2.5만평) 또는 일부를 매입한 후 [cite: 272, 273][cite_start], 개발하지 않고 토지가 상승 및 개발 상황을 보면서 토지 자체를 분양(매각)합니다. [cite: 281]</p>
+                </details>
+
+                <details>
+                    [cite_start]<summary>제3안 : 법인 양도 [cite: 282]</summary>
+                    [cite_start]<p>적정한 개발업체, 기업, 단체 등에게 토지를 포함한 법인까지 양도(M&A)합니다. [cite: 283]</p>
+                </details>
+            </div>
+        </section>
+
+        <section id="biz-plan-2">
+            <div class="content-box">
+                <h2>예상 사업비 및 수익 (제2안 PF 기준)</h2>
+                
+                <div class="two-column">
+                    <div>
+                        [cite_start]<h3>주요 시설 [cite: 296]</h3>
+                        <ul>
+                            <li>호텔</li>
+                            <li>컨벤션센터</li>
+                            <li>골프연습장</li>
+                            <li>횟센터</li>
+                            <li>스카이라운지</li>
+                            <li>워터파크 등</li>
+                        </ul>
+                        [cite_start]<h3>총 지출: 2,690억 [cite: 297]</h3>
+                        <ul>
+                            [cite_start]<li>토지비: 100억 (타인소유분 매입/취득비 포함) [cite: 297]</li>
+                            [cite_start]<li>설계/인허가/분담금 등: 60억 [cite: 298]</li>
+                            [cite_start]<li>공사비: 2,500억 [cite: 298]</li>
+                            [cite_start]<li>운영비: 30억 (5,000만원 x 60개월) [cite: 299]</li>
+                        </ul>
+                    </div>
+                    <div>
+                        [cite_start]<h3>사업 부지 [cite: 295]</h3>
+                        <p>11,739평</p>
+
+                        [cite_start]<h3>총 수입: 4,200억 [cite: 300]</h3>
+                        <ul>
+                            [cite_start]<li>분양수입: 3,900억 (3만평 x 1,300만원) [cite: 300]</li>
+                            [cite_start]<li>임대시설 보증금: 300억 (워터파크 등) [cite: 300]</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="arch-overview">
+            <div class="content-box">
+                [cite_start]<h2>리조트 건축 개요 (안) [cite: 301]</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>대지위치</th>
+                            [cite_start]<td>경기도 안산시 단원구 대부북동 산18-1 외 12필지 [cite: 303]</td>
+                        </tr>
+                        <tr>
+                            <th>대지면적</th>
+                            [cite_start]<td>38,807 ㎡ (11,739평) [cite: 306]</td>
+                        </tr>
+                        <tr>
+                            <th>지역, 지구</th>
+                            [cite_start]<td>자연녹지지역 [cite: 306]</td>
+                        </tr>
+                        <tr>
+                            <th>건축연면적</th>
+                            [cite_start]<td>99,921.665 ㎡ (30,226.30평) [cite: 308]</td>
+                        </tr>
+                        <tr>
+                            <th>지하 / 지상</th>
+                            [cite_start]<td>지하 67,050㎡ / 지상 32,871㎡ [cite: 310, 312]</td>
+                        </tr>
+                        <tr>
+                            <th>건물용도</th>
+                            [cite_start]<td>관광, 숙박, 판매, 유락, 근생, 문화집회, 체육시설 [cite: 314]</td>
+                        </tr>
+                        <tr>
+                            <th>건물규모</th>
+                            [cite_start]<td>지하4층, 지상 14층 [cite: 316]</td>
+                        </tr>
+                        <tr>
+                            <th>용적율 / 건폐율</th>
+                            [cite_start]<td>79.78% / 15% [cite: 318, 320]</td>
+                        </tr>
+                        <tr>
+                            <th>주차대수</th>
+                            [cite_start]<td>1,354대 [cite: 322]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <section id="site-plan" class="image-slide">
+            [cite_start]<h2>리조트 단지 배치도 [cite: 325, 341]</h2>
+            <img src="리조트 배치도.png" alt="리조트 단지 배치도">
+        </section>
+
+        <section id="appendix">
+            <div class="content-box">
+                <h2>주변 현황 (언론 보도 요약)</h2>
+                <ul>
+                    <li><strong>'보물섬' 대부도 프로젝트:</strong> 안산시, 대부도를 해양·생태·관광 명소로 육성. [cite_start]'대부도 보물섬 프로젝트' 가동 [cite: 367, 498, 509]</li>
+                    <li><strong>방아머리 마리나항:</strong> 정부, 방아머리 일원을 국가 지원 거점 마리나로 선정. [cite_start]1000억 투입하여 2019년까지 300척 규모 요트 계류 시설 조성 계획 (2015년 기준) [cite: 506, 515]</li>
+                    [cite_start]<li><strong>시화호 개발 (MOU):</strong> 경기도, 화성·안산·시흥시와 '시화호 해양레저관광단지' 공동 개발 MOU 체결 (2010년 기준) [cite: 371, 372]</li>
+                    [cite_start]<li><strong>중국 투자 유치:</strong> 안산시, 중국해양대학공고유한회사 및 사하시와 대부도 지역 투자 MOU 체결 (2015년 기준) [cite: 392, 396] [cite_start](대부도 힐링컴플렉스 조성, 한·중 유리연구소 건립 등 [cite: 398, 400])</li>
+                    [cite_start]<li><strong>서울대 시흥캠퍼스:</strong> 시화호를 사이에 두고 배곧신도시에 서울대 시흥캠퍼스 2018년 개교 예정 (2015년 기준) [cite: 449, 461]</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="final-slide">
+            <h1>Thank You!</h1>
+        </section>
+
+    </main>
+
+    <script>
+        // [천재 아이디어 9] 내장 JS: 키보드 내비게이션 (세로 스크롤 스냅)
+        document.addEventListener('keydown', (e) => {
+            const main = document.querySelector('main');
+            if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === 'Space') {
+                e.preventDefault(); // 스페이스바 등의 기본 스크롤 방지
+                main.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+                e.preventDefault();
+                main.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>

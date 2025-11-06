@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대부도 휴먼파크 리조트 사업계획서</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .section-title {
+            @apply text-3xl font-bold text-gray-800 mb-6 pb-2 border-b-2 border-blue-600 inline-block;
+        }
+        .table-header {
+            @apply bg-gray-100 p-3 font-semibold text-gray-700;
+        }
+        .table-cell {
+            @apply p-3 text-gray-800;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-700">
+
+    <!-- 헤더 및 네비게이션 -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-blue-600">
+                (주)휴먼파크
+            </div>
+            <div class="space-x-4">
+                <a href="#overview" class="text-gray-600 hover:text-blue-600">사업 개요</a>
+                <a href="#location" class="text-gray-600 hover:text-blue-600">입지 환경</a>
+                <a href="#plan" class="text-gray-600 hover:text-blue-600">건축 계획</a>
+                <a href="#financial" class="text-gray-600 hover:text-blue-600">사업성 분석</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 메인 히어로 섹션 -->
+    <section class="relative h-[60vh] min-h-[400px] bg-black text-white">
+        <!-- 사용자 참고: 이 이미지는 '리조트 투시도 (사업계획 표지 이미지).png' 파일입니다. -->
+        <img src="리조트 투시도 (사업계획 표지 이미지).png" alt="대부도 리조트 투시도" class="w-full h-full object-cover opacity-50">
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4">대부도 휴먼파크 리조트</h1>
+            <p class="text-2xl font-light">서해안의 새로운 랜드마크, 프리미엄 해양 관광의 중심</p>
+        </div>
+    </section>
+
+    <!-- 메인 컨텐츠 -->
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- 사업 개요 -->
+        <section id="overview" class="my-12">
+            <h2 class="section-title">사업 개요</h2>
+            <div class="bg-white p-8 rounded-lg shadow-xl overflow-hidden">
+                <p class="text-lg mb-6 text-gray-700">
+                    본 사업은 경기도 안산시 대부북동 일원에 관광, 숙박, 판매, 유락, 문화, 체육시설을 아우르는
+                    복합 리조트를 건설하여, 수도권 및 중국, 일본 등 해외 관광객을 유치할 수 있는
+                    전략적 관광지를 조성하는 것을 목적으로 합니다.
+                </p>
+                <div class="shadow-md rounded-lg overflow-hidden border border-gray-200">
+                    <table class="w-full min-w-full divide-y divide-gray-200">
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="table-header w-1/3">대지 위치</td>
+                                <td class="table-cell">경기도 안산시 단원구 대부북동 산18-1 외 12필지</td>
+                            </tr>
+                            <tr>
+                                <td class="table-header">지역 / 지구</td>
+                                <td class="table-cell">자연녹지지역</td>
+                            </tr>
+                            <tr>
+                                <td class="table-header">대지 면적</td>
+                                <td class="table-cell">38,807 m² (11,739평)</td>
+                            </tr>
+                            <tr>
+                                <td class="table-header">건축 연면적</td>
+                                <td class="table-cell">99,921.665 m² (30,226.30평)</td>
+                            </tr>
+                            <tr>
+                                <td class="table-header">건물 규모</td>
+                                <td class="table-cell">지하 4층, 지상 14층</td>
+                            </tr>
+                            <tr>
+                                <td class="table-header">용도</td>
+                                <td class="table-cell">관광, 숙박, 판매, 유락, 근생, 문화집회, 체육시설</td>
+                            </tr>
+                            <tr>
+                                <td class="table-header">건폐율 / 용적률</td>
+                                <td class="table-cell">15% / 79.78%</td>
+                            </tr>
+                            <tr>
+                                <td class="table-header">주차 대수</td>
+                                <td class="table-cell">1,354대</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 입지 환경 -->
+        <section id="location" class="my-12">
+            <h2 class="section-title">입지 및 개발 환경</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 광역 위치도 -->
+                <div class="bg-white p-6 rounded-lg shadow-xl">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">광역 입지 조건</h3>
+                    <!-- 사용자 참고: 이 이미지는 '사업지 위치도(수도권 광역 지도).png' 파일입니다. -->
+                    <img src="사업지 위치도(수도권 광역 지도).png" alt="사업지 위치도" class="w-full rounded-md shadow-inner mb-4 border border-gray-200">
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li>인천국제공항, 송도신도시, 전곡항, 제부도 인접</li>
+                        <li>수도권 1시간 내 접근 가능한 최적의 지리적 위치</li>
+                        <li>중국, 일본 등 해외 관광객 유치에 유리한 관문형 입지</li>
+                    </ul>
+                </div>
+
+                <!-- 주변 개발 현황 -->
+                <div class="bg-white p-6 rounded-lg shadow-xl">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">주변 개발 계획</h3>
+                     <!-- 사용자 참고: 이 이미지는 '대부도 개발 계획도 (주변 개발 현황).png' 파일입니다. -->
+                    <img src="대부도 개발 계획도 (주변 개발 현황).png" alt="대부도 개발 계획도" class="w-full rounded-md shadow-inner mb-4 border border-gray-200">
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li>송산그린시티, 유니버셜 스튜디오(계획) 등 대규모 프로젝트</li>
+                        <li>시화호 조력발전소 및 해양 생태 공원</li>
+                        <li>방아머리 마리나항만 개발 등 해양 레저 인프라 확충</li>
+                        <li>서울대 국제캠퍼스(시흥) 등 교육/연구 시설 연계</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 건축 계획 -->
+        <section id="plan" class="my-12">
+            <h2 class="section-title">건축 계획</h2>
+            
+            <!-- 리조트 투시도 -->
+            <div class="bg-white p-6 rounded-lg shadow-xl mb-8">
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">리조트 투시도</h3>
+                <!-- 사용자 참고: 이 이미지는 '리조트 투시도 (사업계획 표지 이미지).png' 파일입니다. -->
+                <img src="리조트 투시도 (사업계획 표지 이미지).png" alt="리조트 투시도" class="w-full h-auto rounded-lg shadow-lg border border-gray-200">
+                <p class="mt-4 text-center text-gray-600">해안선과 조화되는 유기적인 디자인의 랜드마크 타워</p>
+            </div>
+
+            <!-- 리조트 배치도 -->
+            <div class="bg-white p-6 rounded-lg shadow-xl">
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">리조트 단지 배치도</h3>
+                <!-- 사용자 참고: 이 이미지는 '리조트 배치도.png' 파일입니다. -->
+                <img src="리조트 배치도.png" alt="리조트 배치도" class="w-full h-auto rounded-lg shadow-lg border border-gray-200 overflow-hidden">
+                <p class="mt-4 text-center text-gray-600">호텔, 워터파크, 컨벤션, 상업시설이 유기적으로 연결된 통합 배치</p>
+            </div>
+        </section>
+
+        <!-- 사업성 분석 -->
+        <section id="financial" class="my-12">
+            <h2 class="section-title">사업성 분석 (제2안 기준)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 예상 사업비 -->
+                <div class="bg-white p-6 rounded-lg shadow-xl border-l-4 border-red-500">
+                    <h3 class="text-xl font-semibold mb-4 text-red-700">예상 사업비 (지출)</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between"><span>토지비 (타인소유분 매입 포함)</span><span class="font-bold">100억</span></div>
+                        <div class="flex justify-between"><span>설계/인허가비/분담금 등</span><span class="font-bold">60억</span></div>
+                        <div class="flex justify-between"><span>공사비</span><span class="font-bold">2,500억</span></div>
+                        <div class="flex justify-between"><span>운영비 (5년)</span><span class="font-bold">30억</span></div>
+                        <hr class="my-2 border-t-2 border-red-200">
+                        <div class="flex justify-between text-lg font-bold text-red-700"><span>총 지출</span><span>약 2,690억</span></div>
+                    </div>
+                </div>
+
+                <!-- 예상 수익 -->
+                <div class="bg-white p-6 rounded-lg shadow-xl border-l-4 border-blue-500">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-700">예상 수익 (수입)</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between"><span>분양 수입 (3만평 x 1,300만원)</span><span class="font-bold">3,900억</span></div>
+                        <div class="flex justify-between"><span>임대시설 보증금 (워터파크 등)</span><span class="font-bold">300억</span></div>
+                        <div class="flex justify-between text-white"><span>-</span><span>-</span></div>
+                        <div class="flex justify-between text-white"><span>-</span><span>-</span></div>
+                        <hr class="my-2 border-t-2 border-blue-200">
+                        <div class="flex justify-between text-lg font-bold text-blue-700"><span>총 수입</span><span>약 4,200억</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 특기 사항 및 파트너 -->
+        <section id="others" class="my-12">
+            <h2 class="section-title">기타 사항</h2>
+            <div class="bg-white p-8 rounded-lg shadow-xl">
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">토지 확보 및 법적 사항</h3>
+                <p class="mb-4 text-gray-700">
+                    본 사업부지는 과거 소유권 관련 법적 분쟁이 있었으나, 2016년 4월 12일부로
+                    모든 소송이 승소로 완결되어 법적 리스크가 완전히 해소되었습니다.
+                    현재 신규 이사진 선임 및 주무관청의 승인 등 투명한 후속 절차가 진행 중입니다.
+                </p>
+
+                <h3 class="text-xl font-semibold mt-8 mb-4 text-gray-800">시공 파트너</h3>
+                <p class="text-gray-700">
+                    (주)원플러스종합건설로부터 본 사업(관광·숙박·판매·유락 근생 신축공사)에 대한
+                    '시공 참여 의향서'를 확보하여, 사업의 실행력을 높였습니다.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>(주) 휴먼파크 | 대부도 리조트 사업부</p>
+            <p class="text-sm text-gray-400 mt-2">본 자료는 사업계획을 설명하기 위한 참고 자료이며, 실제 인허가 과정에서 일부 변경될 수 있습니다.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

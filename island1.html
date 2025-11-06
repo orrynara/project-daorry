@@ -103,32 +103,50 @@
 
         <!-- 입지 환경 -->
         <section id="location" class="my-12">
-            <h2 class="section-title">입지 및 개발 환경</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- 광역 위치도 -->
+            <h2 class="section-title">입지 환경</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
                 <div class="bg-white p-6 rounded-lg shadow-xl">
-                    <h3 class="text-xl font-semibold mb-4 text-gray-800">광역 입지 조건</h3>
-                    <!-- 사용자 참고: 이 이미지는 '사업지 위치도(수도권 광역 지도).png' 파일입니다. -->
-                    <img src="island/사업지 위치도(수도권 광역 지도).png" alt="사업지 위치도" class="w-full rounded-md shadow-inner mb-4 border border-gray-200">
-                    <ul class="list-disc list-inside space-y-2 text-gray-700">
-                        <li>인천국제공항, 송도신도시, 전곡항, 제부도 인접</li>
-                        <li>수도권 1시간 내 접근 가능한 최적의 지리적 위치</li>
-                        <li>중국, 일본 등 해외 관광객 유치에 유리한 관문형 입지</li>
-                    </ul>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">전국(수도권) 뷰</h3>
+                    <p class="text-sm text-gray-600 mb-4">인천국제공항 · 송도 · 서울 대비 사업지의 거시적 위치</p>
+                    <iframe class="w-full h-80 rounded-lg border border-gray-200 shadow-inner" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6539366.934437687!2d127.5!3d36.2!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b5a6b1d9e0a85%3A0x5c2a71f4b2f5c4df!2z7ISc7Jq47Yq567OE7Iuc!5e0!3m2!1sko!2skr!4v1730899200" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="대한민국 수도권 중심 광역 지도"></iframe>
                 </div>
+                <div class="bg-white p-6 rounded-lg shadow-xl">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">대부도 상세(위성)</h3>
+                    <p class="text-sm text-gray-600 mb-4">대부북동 산 18-1 인근 사업지 위성 관찰</p>
+                    <iframe class="w-full h-80 rounded-lg border border-gray-200 shadow-inner" src="https://www.google.com/maps?q=%EA%B2%BD%EA%B8%B0%EB%8F%84+%EC%95%88%EC%82%B0%EC%8B%9C+%EB%8B%A8%EC%9B%90%EA%B5%AC+%EB%8C%80%EB%B6%80%EB%B6%81%EB%8F%99+%EC%82%B0+18-1&hl=ko&output=embed&t=k" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="대부도 사업지 위성 지도"></iframe>
+                </div>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-xl">
+                <h3 class="text-lg font-semibold mb-4 text-gray-800">핵심 접근성 요약</h3>
+                <ul class="list-disc list-inside space-y-2 text-gray-700 mb-2">
+                    <li>인천국제공항 · 송도 · 전곡항 · 제부도 인접</li>
+                    <li>수도권 1시간 내 접근 가능한 지리적 우위</li>
+                    <li>중국 · 일본 등 해외 관광객 유치에 유리한 관문형 입지</li>
+                </ul>
+                <p class="text-xs text-gray-500">지도 데이터는 Google Maps 기준이며 실제 개발·교통 상황은 변동될 수 있음.</p>
+            </div>
+        </section>
 
-                <!-- 주변 개발 현황 -->
-                <div class="bg-white p-6 rounded-lg shadow-xl">
-                    <h3 class="text-xl font-semibold mb-4 text-gray-800">주변 개발 계획</h3>
-                     <!-- 사용자 참고: 이 이미지는 '대부도 개발 계획도 (주변 개발 현황).png' 파일입니다. -->
-                    <img src="island/대부도 개발 계획도 (주변 개발 현황).png" alt="대부도 개발 계획도" class="w-full rounded-md shadow-inner mb-4 border border-gray-200">
-                    <ul class="list-disc list-inside space-y-2 text-gray-700">
-                        <li>송산그린시티, 유니버셜 스튜디오(계획) 등 대규모 프로젝트</li>
-                        <li>시화호 조력발전소 및 해양 생태 공원</li>
-                        <li>방아머리 마리나항만 개발 등 해양 레저 인프라 확충</li>
-                        <li>서울대 국제캠퍼스(시흥) 등 교육/연구 시설 연계</li>
-                    </ul>
-                </div>
+        <section id="dev-plan" class="my-12">
+            <h2 class="section-title">주변 개발 계획</h2>
+            <div class="relative rounded-xl overflow-hidden shadow-xl bg-gray-200">
+                <img src="island/대부도 지도.png" alt="대부도 주변 지도" class="w-full h-[520px] object-cover select-none">
+                <aside class="absolute top-4 right-4 w-[min(92%,360px)] bg-white/85 backdrop-blur p-5 rounded-xl border border-blue-100 shadow">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">개발 항목</h3>
+                    <ol class="list-decimal list-inside space-y-1 text-gray-800 text-sm leading-relaxed">
+                        <li>세계최대조력발전소</li>
+                        <li>멀티테크노밸리 (생태·첨단도시 현재 공사중)</li>
+                        <li>에어파크 해양항공레저단지</li>
+                        <li>신재생에너지 복합단지 세계최대</li>
+                        <li>송산그린시티 인구 15만명 친환경 레저도시</li>
+                        <li>쥐라기공원조성 공룡알 화석지</li>
+                        <li>유니버셜스튜디오 세계최대 2014 개장예정</li>
+                        <li>경기도립수목원 바다향기 수목원</li>
+                        <li>메추리섬 유원지 SK그룹 해양유원지</li>
+                        <li>흘곶 마리나항</li>
+                    </ol>
+                    <p class="mt-3 text-[11px] text-gray-500 leading-snug">위 항목은 개념 나열이며, 좌표 제공 시 지도 마커/레이어로 정밀 시각화 가능.</p>
+                </aside>
             </div>
         </section>
 
@@ -153,54 +171,136 @@
             </div>
         </section>
 
-        <!-- 사업성 분석 -->
-        <section id="financial" class="my-12">
-            <h2 class="section-title">사업성 분석 (제2안 기준)</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- 예상 사업비 -->
-                <div class="bg-white p-6 rounded-lg shadow-xl border-l-4 border-red-500">
-                    <h3 class="text-xl font-semibold mb-4 text-red-700">예상 사업비 (지출)</h3>
-                    <div class="space-y-3">
-                        <div class="flex justify-between"><span>토지비 (타인소유분 매입 포함)</span><span class="font-bold">100억</span></div>
-                        <div class="flex justify-between"><span>설계/인허가비/분담금 등</span><span class="font-bold">60억</span></div>
-                        <div class="flex justify-between"><span>공사비</span><span class="font-bold">2,500억</span></div>
-                        <div class="flex justify-between"><span>운영비 (5년)</span><span class="font-bold">30억</span></div>
-                        <hr class="my-2 border-t-2 border-red-200">
-                        <div class="flex justify-between text-lg font-bold text-red-700"><span>총 지출</span><span>약 2,690억</span></div>
-                    </div>
-                </div>
+        <!-- 사업성 분석 & 기타 주요 사항 (리디자인) -->
+        <section id="financial" class="my-20">
+            <div class="max-w-6xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden">
+                <!-- 헤더 -->
+                <header class="bg-gradient-to-r from-blue-700 to-blue-500 text-white p-6 sm:p-10">
+                    <h1 class="text-3xl sm:text-4xl font-bold mb-1">사업성 분석</h1>
+                    <p class="text-xl sm:text-2xl font-light opacity-90">제2안 기준</p>
+                </header>
 
-                <!-- 예상 수익 -->
-                <div class="bg-white p-6 rounded-lg shadow-xl border-l-4 border-blue-500">
-                    <h3 class="text-xl font-semibold mb-4 text-blue-700">예상 수익 (수입)</h3>
-                    <div class="space-y-3">
-                        <div class="flex justify-between"><span>분양 수입 (3만평 x 1,300만원)</span><span class="font-bold">3,900억</span></div>
-                        <div class="flex justify-between"><span>임대시설 보증금 (워터파크 등)</span><span class="font-bold">300억</span></div>
-                        <div class="flex justify-between text-white"><span>-</span><span>-</span></div>
-                        <div class="flex justify-between text-white"><span>-</span><span>-</span></div>
-                        <hr class="my-2 border-t-2 border-blue-200">
-                        <div class="flex justify-between text-lg font-bold text-blue-700"><span>총 수입</span><span>약 4,200억</span></div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                <main class="p-6 sm:p-10">
+                    <!-- 핵심 요약 -->
+                    <section class="mb-10">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6 border-l-4 border-blue-600 pl-3">핵심 요약</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- 총 수입 -->
+                            <div class="bg-blue-50 border-l-4 border-blue-500 rounded-lg p-6 shadow-md">
+                                <div class="flex items-center space-x-4">
+                                    <div class="flex-shrink-0 bg-blue-500 text-white rounded-full p-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zm0 12c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zM6 12c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zm12 0c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-blue-700">예상 총 수입</p>
+                                        <p class="text-3xl font-bold text-blue-900">약 4,200<span class="text-xl ml-1">억</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 총 지출 -->
+                            <div class="bg-red-50 border-l-4 border-red-500 rounded-lg p-6 shadow-md">
+                                <div class="flex items-center space-x-4">
+                                    <div class="flex-shrink-0 bg-red-500 text-white rounded-full p-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 14l6-6m-5.5 6.5l5.5-5.5" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h10M4 5h16" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-red-700">예상 총 지출</p>
+                                        <p class="text-3xl font-bold text-red-900">약 2,690<span class="text-xl ml-1">억</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 예상 수익 -->
+                            <div class="bg-green-50 border-l-4 border-green-500 rounded-lg p-6 shadow-md">
+                                <div class="flex items-center space-x-4">
+                                    <div class="flex-shrink-0 bg-green-500 text-white rounded-full p-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-green-700">예상 사업 수익</p>
+                                        <p class="text-3xl font-bold text-green-900">약 1,510<span class="text-xl ml-1">억</span></p>
+                                        <p class="text-xs text-gray-500">(수입 4,200억 - 지출 2,690억)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
 
-        <!-- 특기 사항 및 파트너 -->
-        <section id="others" class="my-12">
-            <h2 class="section-title">기타 사항</h2>
-            <div class="bg-white p-8 rounded-lg shadow-xl">
-                <h3 class="text-xl font-semibold mb-4 text-gray-800">토지 확보 및 법적 사항</h3>
-                <p class="mb-4 text-gray-700">
-                    본 사업부지는 과거 소유권 관련 법적 분쟁이 있었으나, 2016년 4월 12일부로
-                    모든 소송이 승소로 완결되어 법적 리스크가 완전히 해소되었습니다.
-                    현재 신규 이사진 선임 및 주무관청의 승인 등 투명한 후속 절차가 진행 중입니다.
-                </p>
+                    <!-- 상세 내역 -->
+                    <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+                        <!-- 지출 -->
+                        <div class="bg-gray-50 rounded-lg p-6 shadow-sm border border-gray-200">
+                            <h3 class="text-xl font-bold text-red-700 mb-5 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                                </svg>
+                                예상 사업비 (지출)
+                            </h3>
+                            <div class="space-y-4 text-gray-700">
+                                <div class="flex justify-between items-baseline"><span class="font-medium">토지비 (타인소유분 매입 포함)</span><span class="text-lg font-bold text-red-600">100<span class="text-sm ml-1">억</span></span></div>
+                                <div class="flex justify-between items-baseline"><span class="font-medium">설계/인허가비/분담금 등</span><span class="text-lg font-bold text-red-600">60<span class="text-sm ml-1">억</span></span></div>
+                                <div class="flex justify-between items-baseline"><span class="font-medium">공사비</span><span class="text-lg font-bold text-red-600">2,500<span class="text-sm ml-1">억</span></span></div>
+                                <div class="flex justify-between items-baseline"><span class="font-medium">운영비 (5년)</span><span class="text-lg font-bold text-red-600">30<span class="text-sm ml-1">억</span></span></div>
+                                <hr class="my-4 border-dashed">
+                                <div class="flex justify-between items-baseline text-xl"><span class="font-bold text-gray-900">총 지출</span><span class="font-bold text-red-800">약 2,690<span class="text-base ml-1">억</span></span></div>
+                            </div>
+                        </div>
+                        <!-- 수입 -->
+                        <div class="bg-gray-50 rounded-lg p-6 shadow-sm border border-gray-200">
+                            <h3 class="text-xl font-bold text-blue-700 mb-5 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7 7m0 0l7-7m-7 7V3" />
+                                </svg>
+                                예상 수익 (수입)
+                            </h3>
+                            <div class="space-y-4 text-gray-700">
+                                <div class="flex justify-between items-baseline"><span class="font-medium">분양 수입</span><span class="text-lg font-bold text-blue-600">3,900<span class="text-sm ml-1">억</span></span></div>
+                                <p class="text-sm text-gray-500 -mt-2 ml-4">(3만평 x 1,300만원)</p>
+                                <div class="flex justify-between items-baseline"><span class="font-medium">임대시설 보증금 (워터파크 등)</span><span class="text-lg font-bold text-blue-600">300<span class="text-sm ml-1">억</span></span></div>
+                                <div class="h-10"></div>
+                                <div class="h-6"></div>
+                                <hr class="my-4 border-dashed">
+                                <div class="flex justify-between items-baseline text-xl"><span class="font-bold text-gray-900">총 수입</span><span class="font-bold text-blue-800">약 4,200<span class="text-base ml-1">억</span></span></div>
+                            </div>
+                        </div>
+                    </section>
 
-                <h3 class="text-xl font-semibold mt-8 mb-4 text-gray-800">시공 파트너</h3>
-                <p class="text-gray-700">
-                    (주)원플러스종합건설로부터 본 사업(관광·숙박·판매·유락 근생 신축공사)에 대한
-                    '시공 참여 의향서'를 확보하여, 사업의 실행력을 높였습니다.
-                </p>
+                    <!-- 기타 주요 사항 -->
+                    <section>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6 border-l-4 border-gray-500 pl-3">기타 주요 사항</h2>
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4 bg-green-50 p-5 rounded-lg border border-green-200">
+                                <div class="flex-shrink-0 text-green-500">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-green-800">토지 확보 및 법적 리스크 해소</h4>
+                                    <p class="text-gray-700 mt-1">과거 소유권 관련 법적 분쟁이 있었으나, <span class="font-bold text-black">2016년 4월 12일부로 모든 소송이 승소로 완결</span>되어 법적 리스크가 완전히 해소되었습니다.</p>
+                                    <p class="text-gray-600 mt-2 text-sm">※ 현재 신규 이사진 선임 및 주무관청 승인 등 투명한 후속 절차가 진행 중입니다.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4 bg-blue-50 p-5 rounded-lg border border-blue-200">
+                                <div class="flex-shrink-0 text-blue-500">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3v-2h-2v2H6a2 2 0 01-2-2V4zm2 0v1h8V4H6zm0 2v1h8V6H6zm0 2v1h8V8H6zm0 2v1h5V10H6z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-blue-800">시공 파트너 확보 (실행력)</h4>
+                                    <p class="text-gray-700 mt-1"><span class="font-bold text-black">(주)원플러스종합건설</span>로부터 본 사업(관광·숙박·판매·유락 근생 신축공사)에 대한 <span class="font-bold text-black">'시공 참여 의향서'를 확보</span>하여 사업의 실행력을 높였습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
             </div>
         </section>
 

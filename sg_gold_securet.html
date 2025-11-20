@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SG금거래소디지털에셋 파트너스 - 실물 금 보관 서비스</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #0f0f0f;
+            color: #ffffff;
+        }
+        .gold-text {
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-border {
+            border: 1px solid #bf953f;
+        }
+        .gold-bg {
+            background: linear-gradient(135deg, #bf953f 0%, #aa771c 100%);
+        }
+        .gold-bg-hover:hover {
+            background: linear-gradient(135deg, #d4af37 0%, #c5a028 100%);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(191, 149, 63, 0.3);
+        }
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(15,15,15,1) 100%);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-yellow-700 selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-panel border-b border-yellow-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center">
+                    <span class="text-xl sm:text-2xl font-bold tracking-tighter text-white">
+                        SG<span class="text-yellow-500">금거래소</span>디지털에셋
+                    </span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#service" class="hover:text-yellow-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">서비스 소개</a>
+                        <a href="#pricing" class="hover:text-yellow-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">보관료 안내</a>
+                        <a href="#security" class="hover:text-yellow-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">보안 시스템</a>
+                        <a href="#contact" class="bg-yellow-600 hover:bg-yellow-500 text-black px-4 py-2 rounded-md text-sm font-bold transition-colors">상담 문의</a>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-gray-900" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-800">
+                <a href="#service" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">서비스 소개</a>
+                <a href="#pricing" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">보관료 안내</a>
+                <a href="#security" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">보안 시스템</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative bg-gray-900 overflow-hidden">
+        <div class="absolute inset-0">
+            <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1609818030013-93f0b83d2456?q=80&w=2070&auto=format&fit=crop" alt="Gold Vault">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl mb-6">
+                당신의 자산, <span class="gold-text">가장 안전한 곳</span>에.<br>
+                실물 금 보관 서비스
+            </h1>
+            <p class="mt-6 text-xl text-gray-300 max-w-3xl mx-auto">
+                SG금거래소디지털에셋 파트너스가 제공하는 초대량 실물 금 보관 솔루션.<br>
+                민간 골드 전문 기업의 노하우와 24시간 철통 보안으로 귀하의 자산을 지킵니다.
+            </p>
+            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#pricing" class="gold-bg text-black font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:scale-105 transition-transform">
+                    보관료 확인하기
+                </a>
+                <a href="#contact" class="glass-panel text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-white/10 transition-colors">
+                    전문가 상담 신청
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Highlights -->
+    <div id="service" class="py-16 bg-neutral-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-base text-yellow-500 font-semibold tracking-wide uppercase">Our Service</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
+                    왜 SG금거래소디지털에셋인가?
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <!-- Card 1 -->
+                <div class="glass-panel p-8 rounded-xl hover:border-yellow-500 transition-colors duration-300">
+                    <div class="w-12 h-12 bg-yellow-900/50 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">민간 골드 전문 기업</h3>
+                    <p class="text-gray-400">
+                        수년간 축적된 금 거래 및 보관 노하우를 바탕으로 최적의 보관 환경을 제공합니다.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-panel p-8 rounded-xl hover:border-yellow-500 transition-colors duration-300">
+                    <div class="w-12 h-12 bg-yellow-900/50 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">24시간 철통 보안</h3>
+                    <p class="text-gray-400">
+                        세콤(SECOM) 경비업체와의 제휴를 통해 24시간 빈틈없는 모니터링과 출동 서비스를 제공합니다.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-panel p-8 rounded-xl hover:border-yellow-500 transition-colors duration-300">
+                    <div class="w-12 h-12 bg-yellow-900/50 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">초대량 보관 특화</h3>
+                    <p class="text-gray-400">
+                        100kg 이상의 대규모 자산 보관에 최적화된 설비와 합리적인 요금 체계를 갖추고 있습니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pricing Section -->
+    <div id="pricing" class="py-16 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black to-gray-900 z-0"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+                    초대량 보관 요금제
+                </h2>
+                <p class="mt-4 text-xl text-gray-400">
+                    안전함에 합리적인 가격을 더했습니다. (VAT 별도)
+                </p>
+            </div>
+
+            <div class="max-w-lg mx-auto bg-gray-800 rounded-2xl shadow-2xl border-2 border-yellow-600 overflow-hidden">
+                <div class="p-8 text-center bg-gray-800">
+                    <h3 class="text-2xl font-semibold text-white">VIP 대용량 플랜</h3>
+                    <p class="mt-2 text-yellow-500 font-medium">100kg 이상 보관 시 적용</p>
+                    <div class="mt-8 flex items-baseline justify-center">
+                        <span class="text-5xl font-extrabold text-white">10만원</span>
+                        <span class="ml-1 text-xl text-gray-400">/ kg (월)</span>
+                    </div>
+                    <p class="mt-4 text-sm text-gray-400">최소 계약 기간: 2개월</p>
+                </div>
+                <div class="px-8 pb-8 bg-gray-800">
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <svg class="h-6 w-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </div>
+                            <p class="ml-3 text-base text-gray-300">1kg 당 월 10만원 정액제</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <svg class="h-6 w-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </div>
+                            <p class="ml-3 text-base text-gray-300">전용 금고 및 개별 관리</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <svg class="h-6 w-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </div>
+                            <p class="ml-3 text-base text-gray-300">입출고 시 전문 보안요원 동행</p>
+                        </li>
+                    </ul>
+
+                    <!-- Calculator -->
+                    <div class="mt-8 pt-8 border-t border-gray-700">
+                        <label for="kg-input" class="block text-sm font-medium text-gray-300 mb-2">예상 보관료 계산기 (kg 입력)</label>
+                        <div class="flex space-x-2">
+                            <input type="number" id="kg-input" placeholder="예: 2000 (2톤)" class="block w-full bg-gray-700 border border-gray-600 rounded-md py-3 px-4 text-white placeholder-gray-400 focus:ring-yellow-500 focus:border-yellow-500" value="2000">
+                            <button onclick="calculatePrice()" class="bg-gray-600 hover:bg-gray-500 text-white px-4 rounded-md font-medium">계산</button>
+                        </div>
+                        <div class="mt-4 p-4 bg-gray-900 rounded-lg text-center">
+                            <p class="text-sm text-gray-400 mb-1">예상 월 보관료</p>
+                            <p class="text-3xl font-bold text-yellow-500" id="price-result">200,000,000원</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Security Section -->
+    <div id="security" class="py-16 bg-neutral-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center">
+            <div class="lg:w-1/2 mb-10 lg:mb-0">
+                 <img class="rounded-lg shadow-2xl border border-gray-700" src="https://images.unsplash.com/photo-1582139329536-e7284fece509?q=80&w=1000&auto=format&fit=crop" alt="Security Camera">
+            </div>
+            <div class="lg:w-1/2 lg:pl-12">
+                <h2 class="text-3xl font-extrabold text-white mb-6">
+                    <span class="text-red-500">SECOM</span> 24시간 보안 시스템
+                </h2>
+                <p class="text-lg text-gray-300 mb-6">
+                    고객님의 소중한 자산을 위해 타협하지 않는 보안 수준을 유지합니다.
+                    국내 최고의 보안 업체 에스원 세콤(SECOM)과 제휴하여 365일 24시간 물샐틈없는 경비 시스템을 가동합니다.
+                </p>
+                <ul class="space-y-4">
+                    <li class="flex items-center text-gray-300">
+                        <span class="w-2 h-2 bg-red-500 rounded-full mr-3"></span>
+                        첨단 감지 센서 및 실시간 모니터링
+                    </li>
+                    <li class="flex items-center text-gray-300">
+                        <span class="w-2 h-2 bg-red-500 rounded-full mr-3"></span>
+                        비상 상황 발생 시 즉각 출동 서비스
+                    </li>
+                    <li class="flex items-center text-gray-300">
+                        <span class="w-2 h-2 bg-red-500 rounded-full mr-3"></span>
+                        다중 잠금 장치 및 통제 구역 설정
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA / Contact -->
+    <div id="contact" class="py-16 bg-black border-t border-gray-800">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-white mb-8">안전한 금고가 필요하십니까?</h2>
+            <p class="text-gray-400 mb-8">
+                지금 바로 상담을 신청하세요. 100kg 이상 초대량 보관에 대한 상세한 안내를 받으실 수 있습니다.
+            </p>
+            
+            <div class="glass-panel p-8 rounded-xl max-w-lg mx-auto text-left">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-300 mb-1">회사명 / 성함</label>
+                    <input type="text" class="w-full bg-gray-800 border border-gray-700 rounded p-2 text-white focus:outline-none focus:border-yellow-500">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-300 mb-1">연락처</label>
+                    <input type="text" class="w-full bg-gray-800 border border-gray-700 rounded p-2 text-white focus:outline-none focus:border-yellow-500">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-300 mb-1">예상 보관 중량 (kg)</label>
+                    <input type="number" class="w-full bg-gray-800 border border-gray-700 rounded p-2 text-white focus:outline-none focus:border-yellow-500">
+                </div>
+                <button class="w-full gold-bg text-black font-bold py-3 rounded hover:opacity-90 transition-opacity" onclick="alert('상담 신청이 접수되었습니다. 담당자가 곧 연락드리겠습니다.')">
+                    상담 신청하기
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-500 text-sm">
+                &copy; 2024 SG금거래소디지털에셋 파트너스. All Rights Reserved.<br>
+                본 서비스는 민간 골드 전문 기업이 제공하며, 보관료 및 계약 조건은 사전 협의에 따라 변동될 수 있습니다.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Calculator Logic
+        function calculatePrice() {
+            const kgInput = document.getElementById('kg-input');
+            const resultDisplay = document.getElementById('price-result');
+            
+            let kg = parseFloat(kgInput.value);
+            if (isNaN(kg) || kg < 0) kg = 0;
+            
+            // Price per kg: 100,000 KRW
+            const pricePerKg = 100000;
+            const totalPrice = kg * pricePerKg;
+            
+            // Format to KRW currency
+            const formattedPrice = new Intl.NumberFormat('ko-KR', { style: 'currency', currency: 'KRW' }).format(totalPrice);
+            
+            // Remove the symbol for cleaner look if desired, or keep it. format returns "₩200,000,000"
+            resultDisplay.textContent = formattedPrice.replace('₩', '') + '원';
+        }
+
+        // Initialize with default value
+        calculatePrice();
+
+        // Add event listener for real-time calculation if preferred
+        document.getElementById('kg-input').addEventListener('input', calculatePrice);
+    </script>
+</body>
+</html>

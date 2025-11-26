@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GMG Token - Pioneering the Digital Gold Standard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --light-gold: #FEDB71;
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 유틸리티 클래스 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .gold-text {
+            background: linear-gradient(45deg, var(--primary-gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 2px solid var(--primary-gold);
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary-gold), #b8860b);
+            color: #000;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-gold);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-gold);
+            color: #000;
+        }
+
+        /* 헤더 */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        /* 히어로 섹션 */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            padding-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 공통 그리드 레이아웃 */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* 카드 스타일 */
+        .card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-gold);
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-gold);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* 섹션 타이틀 */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+        }
+
+        /* 테이블 스타일 */
+        .table-container {
+            overflow-x: auto;
+            margin: 30px 0;
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            color: var(--text-muted);
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        th {
+            color: var(--primary-gold);
+            font-weight: 600;
+        }
+
+        /* 로드맵 */
+        .roadmap-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 40px;
+            border-left: 2px solid var(--primary-gold);
+        }
+
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: var(--primary-gold);
+            border-radius: 50%;
+        }
+
+        .roadmap-date {
+            color: var(--primary-gold);
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* 폼 스타일 */
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            background: var(--card-bg);
+            border: 1px solid #334155;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .contact-form button {
+            width: 100%;
+        }
+
+        /* 푸터 */
+        footer {
+            background-color: #020617;
+            padding: 50px 0;
+            border-top: 1px solid #1e293b;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-links h4 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        /* 모바일 대응 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            /* 심플함을 위해 모바일 메뉴 생략 */
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo">GMG TOKEN</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#whitepaper">White Paper</a></li>
+                    <li><a href="#dual-token">Dual Token</a></li>
+                    <li><a href="#ecosystem">Ecosystem</a></li>
+                    <li><a href="#roadmap">Roadmap</a></li>
+                    <li><a href="#partners">Partners</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="btn btn-outline">View on Tronscan</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1 class="gold-text">Pioneering the<br>Digital Gold Standard</h1>
+            <p>Bridging the stability of gold with the innovation of blockchain through our unique dual-token ecosystem:
+                the G777 STO and GMG Utility Token.</p>
+            <a href="#whitepaper" class="btn btn-primary">Discover Our Vision</a>
+        </div>
+    </section>
+
+    <section id="whitepaper" class="section-padding">
+        <div class="container text-center">
+            <div class="section-title">
+                <h2>Project White Paper</h2>
+                <p>Explore the comprehensive details of our dual-token system (GMG & G777), platform architecture, and
+                    operational strategy.</p>
+            </div>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <a href="#" class="btn btn-outline"><i class="fas fa-file-pdf"></i> Download English White Paper</a>
+                <a href="#" class="btn btn-outline"><i class="fas fa-file-pdf"></i> Download Korean White Paper</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" style="background-color: #162032;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Business Background</h2>
+                <p>Pioneering the Future of Digital Investment</p>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <i class="fas fa-globe fa-2x" style="color: var(--primary-gold); margin-bottom: 20px;"></i>
+                    <h3>The Rise of RWA</h3>
+                    <p>As the virtual asset market matures, investors seek stability. Gold, as a premier Real World
+                        Asset, offers proven security against market volatility.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-users fa-2x" style="color: var(--primary-gold); margin-bottom: 20px;"></i>
+                    <h3>Democratizing Investment</h3>
+                    <p>GMG removes high entry barriers, allowing anyone to own a fraction of physical gold through a
+                        secure, divisible digital token.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-lock fa-2x" style="color: var(--primary-gold); margin-bottom: 20px;"></i>
+                    <h3>Global Accessibility</h3>
+                    <p>A borderless financial instrument allowing users worldwide to access and trade gold value without
+                        physical storage complexities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dual-token" class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Dual Token Structure</h2>
+                <p>Separating 'store of value' and 'ecosystem activation' to maximize returns.</p>
+            </div>
+            <div class="grid-2">
+                <div class="card" style="border-color: var(--primary-gold);">
+                    <h3 style="font-size: 2rem;">G777 (STO)</h3>
+                    <p class="gold-text">The Steadfast Anchor of Value</p>
+                    <hr style="border-color: rgba(255,255,255,0.1); margin: 20px 0;">
+                    <p>A security token 1:1 pegged to the value of physical gold. G777 is a digital certificate of legal
+                        ownership, serving as a premier inflation hedge.</p>
+                </div>
+                <div class="card" style="border-color: var(--light-gold);">
+                    <h3 style="font-size: 2rem;">GMG (Utility)</h3>
+                    <p class="gold-text">The Engine Driving Growth</p>
+                    <hr style="border-color: rgba(255,255,255,0.1); margin: 20px 0;">
+                    <p>The engine that promotes economic activity. Used for service fees, staking rewards, and
+                        governance, with value linked to platform vibrancy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stability" class="section-padding" style="background-color: #162032;">
+        <div class="container">
+            <div class="grid-2">
+                <div>
+                    <h2 class="gold-text" style="font-size: 2.5rem; margin-bottom: 20px;">Gold-Backed Stability</h2>
+                    <p style="margin-bottom: 30px; color: var(--text-muted);">
+                        Every GMG token is meticulously backed by one troy ounce of 99.99% pure physical gold.
+                    </p>
+                    <ul style="color: var(--text-muted);">
+                        <li style="margin-bottom: 15px;"><i class="fas fa-check-circle"
+                                style="color: var(--primary-gold);"></i> 1:1 Backing with Pure Gold</li>
+                        <li style="margin-bottom: 15px;"><i class="fas fa-check-circle"
+                                style="color: var(--primary-gold);"></i> Secure & Regulated Storage (KR & UAE)</li>
+                        <li style="margin-bottom: 15px;"><i class="fas fa-check-circle"
+                                style="color: var(--primary-gold);"></i> Real-Time Price Linkage</li>
+                        <li style="margin-bottom: 15px;"><i class="fas fa-check-circle"
+                                style="color: var(--primary-gold);"></i> Independent Monthly Audits</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 20px;">Monthly Collateralization Ratio</h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Month</th>
+                                    <th>Ratio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Jan '24</td>
+                                    <td>104.5%</td>
+                                </tr>
+                                <tr>
+                                    <td>Feb '24</td>
+                                    <td>104.9%</td>
+                                </tr>
+                                <tr>
+                                    <td>Mar '24</td>
+                                    <td>105.3%</td>
+                                </tr>
+                                <tr>
+                                    <td>Apr '24</td>
+                                    <td>106.0%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size: 0.8rem; color: var(--text-muted); text-align: right;">* Audited & Verifiable
+                        Reserves</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Operational Policy</h2>
+            </div>
+            <div class="grid-3">
+                <div class="card text-center">
+                    <h3 style="font-size: 2.5rem;">75%</h3>
+                    <p>Payment Reserve<br>(Physical Gold)</p>
+                </div>
+                <div class="card text-center">
+                    <h3 style="font-size: 2.5rem;">30%</h3>
+                    <p>Investment Operations<br>(Strategic Expansion)</p>
+                </div>
+                <div class="card text-center">
+                    <h3 style="font-size: 2.5rem;">Auto</h3>
+                    <p>Smart Contract<br>Governance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ecosystem" class="section-padding" style="background-color: #162032;">
+        <div class="container">
+            <div class="section-title">
+                <h2>The GMG & G777 Ecosystem</h2>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>GMG Platform</h3>
+                    <p>An O2O hub connecting customers and providers directly, eliminating intermediaries.</p>
+                </div>
+                <div class="card">
+                    <h3>G777 Exchange</h3>
+                    <p>A dedicated, secure exchange for trading STO tokens with high liquidity.</p>
+                </div>
+                <div class="card">
+                    <h3>Payment Solutions</h3>
+                    <p>Digital wallet, membership cards, and QR/NFC payments at merchant networks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="roadmap" class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Roadmap</h2>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="roadmap-item">
+                    <span class="roadmap-date">2025 Q4 - Foundation & Partnerships</span>
+                    <p>Finalize G777 legal framework, secure partnerships with mines and financial institutions, GMG
+                        Platform alpha version.</p>
+                </div>
+                <div class="roadmap-item">
+                    <span class="roadmap-date">2026 Q1-Q2 - Launch & Activation</span>
+                    <p>Conduct G777 private sale, launch platform beta, and pursue GMG utility token listing on global
+                        exchanges.</p>
+                </div>
+                <div class="roadmap-item">
+                    <span class="roadmap-date">2026 Q3-Q4 - Service Expansion</span>
+                    <p>Initiate G777 public sale, launch DeFi services (staking, lending), and expand merchant network.
+                    </p>
+                </div>
+                <div class="roadmap-item">
+                    <span class="roadmap-date">2027 Beyond - Global Scale</span>
+                    <p>Global payment solutions, NFT marketplace, derivative financial services, and DAO governance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="partners" class="section-padding" style="background-color: #162032;">
+        <div class="container text-center">
+            <div class="section-title">
+                <h2>Core Asset Partnership</h2>
+                <p>Strategic partnership with Daehan Mining Development Co., Ltd.</p>
+            </div>
+            <div class="card" style="max-width: 600px; margin: 0 auto;">
+                <h3>Geumpung Mine (South Korea)</h3>
+                <p style="font-size: 1.2rem; color: white; margin: 10px 0;">Estimated Reserves: 27,000 tons</p>
+                <p>Ensuring a stable and reliable supply of gold to back the G777 tokens. All gold supplied is directly
+                    deposited into audited institutions.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <div class="grid-2">
+                <div>
+                    <h2>Get In Touch</h2>
+                    <p style="margin-bottom: 30px; color: var(--text-muted);">Have a question or partnership proposal?
+                    </p>
+
+                    <div style="margin-bottom: 20px;">
+                        <h4 style="color: var(--primary-gold);">Address</h4>
+                        <p>#504, 381 Gangnam-daero, Seocho-gu, Seoul, Korea</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h4 style="color: var(--primary-gold);">Email</h4>
+                        <p>contact@gmgsto.com</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--primary-gold);">Operating Company</h4>
+                        <p>UAE S&H ARTWORKS TRADING CO. L.L.C.</p>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea rows="5" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 class="logo" style="margin-bottom: 20px;">GMG TOKEN</h3>
+                    <p>Pioneering the Digital Gold Standard with Real World Assets.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Regulatory Compliance</a></li>
+                        <li><a href="#">Investment Risk</a></li>
+                        <li><a href="#">Audit and Reserves</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">Twitter / X</a></li>
+                        <li><a href="#">Telegram</a></li>
+                        <li><a href="#">Medium</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.1); margin-bottom: 20px;">
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+                <p>&copy; 2024 GMG Project by UAE S&H ARTWORKS TRADING CO. L.L.C. All rights reserved.</p>
+                <p style="font-size: 0.8rem; margin-top: 10px;">This website is for informational purposes only and does
+                    not constitute financial advice.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

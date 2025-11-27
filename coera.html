@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -369,7 +369,7 @@
 
     <header>
         <div class="container nav-container">
-            <div class="logo">
+            <div class="logo" id="logo-toggle" style="cursor: pointer;">
                 <img src="coera_image/coera_logo.png" alt="COERA Logo" style="height: 40px; margin-right: 10px;">
                 COERA
             </div>
@@ -406,6 +406,55 @@
             </div>
         </div>
     </section>
+
+    <script>
+        // Background video list and logo click toggle logic
+        (function () {
+            var videos = [
+                'coera_image/COERA ci.mp4',
+                'coera_image/COERA ci__.mp4',
+                'coera_image/COERA TOP1.mp4',
+                'coera_image/COERA TOP2.mp4',
+                'coera_image/COERA TOP3.mp4',
+                'coera_image/COERA 로고2.mp4',
+                'coera_image/COERA 로고3.mp4',
+                'coera_image/COERA 로고05.mp4',
+                'coera_image/COERA 로고06.mp4',
+                'coera_image/COERA 로고07.mp4',
+                'coera_image/COERA 로고08.mp4',
+                'coera_image/COERA 로고09.mp4',
+                'coera_image/COERA 로고10.mp4',
+                'coera_image/COERA 로고11.mp4',
+                'coera_image/COERA 로고13_GOOD.mp4',
+                'coera_image/COERA 로고14.mp4',
+                'coera_image/COERA 로고15.mp4',
+                'coera_image/COERA 로고16.mp4',
+                'coera_image/COERA 로고17.mp4',
+                'coera_image/COERA 로고18.mp4'
+            ];
+
+            var videoElement = document.querySelector('.hero-video');
+            var sourceElement = videoElement ? videoElement.querySelector('source') : null;
+            var logo = document.getElementById('logo-toggle');
+            var currentIndex = 0;
+
+            if (!videoElement || !sourceElement || !logo || videos.length === 0) {
+                return;
+            }
+
+            // Make sure first source matches current file
+            sourceElement.src = videos[0];
+            videoElement.load();
+            videoElement.play().catch(function () { });
+
+            logo.addEventListener('click', function () {
+                currentIndex = (currentIndex + 1) % videos.length;
+                sourceElement.src = videos[currentIndex];
+                videoElement.load();
+                videoElement.play().catch(function () { });
+            });
+        })();
+    </script>
 
     <section id="benefits" class="section-padding">
         <div class="container">

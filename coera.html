@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COERA - Blockchain Real Estate Utility Platform</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* COERA Brand Colors: Red & White on Dark */
+            --primary-color: #E63946;
+            /* Vivid Red */
+            --secondary-color: #F1FAEE;
+            /* Off White */
+            --accent-glow: rgba(230, 57, 70, 0.4);
+
+            /* Dark Theme Base */
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Typography & Colors */
+        .brand-text {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, var(--primary-color), #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--accent-glow);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background-color: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 15px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.7);
+            /* Dark overlay for readability */
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 24px;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Grids & Cards */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* License Badge Area */
+        .license-box {
+            background: linear-gradient(135deg, #1e293b, #162032);
+            border: 1px solid var(--primary-color);
+            padding: 40px;
+            border-radius: 16px;
+            text-align: left;
+        }
+
+        .license-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--text-muted);
+        }
+
+        .license-detail i {
+            color: var(--primary-color);
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* Roadmap */
+        .roadmap-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .roadmap-item {
+            position: relative;
+            padding-left: 50px;
+            padding-bottom: 50px;
+            border-left: 2px solid rgba(230, 57, 70, 0.3);
+        }
+
+        .roadmap-item:last-child {
+            border-left: none;
+        }
+
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: var(--dark-bg);
+            border: 3px solid var(--primary-color);
+            border-radius: 50%;
+        }
+
+        .roadmap-date {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #020617;
+            padding: 60px 0;
+            border-top: 1px solid #1e293b;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            /* Mobile Menu implementation omitted for simplicity */
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="coera_image/coera_logo.png" alt="COERA Logo" style="height: 40px; margin-right: 10px;">
+                COERA
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#benefits">Benefits</a></li>
+                    <li><a href="#license">Trust & License</a></li>
+                    <li><a href="#ecosystem">Ecosystem</a></li>
+                    <li><a href="#roadmap">Roadmap</a></li>
+                </ul>
+            </nav>
+            <a href="coera_image/COERA 백서_초안 (한글).pdf" class="btn btn-primary" download>Whitepaper <i
+                    class="fas fa-download"></i></a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="coera_image/COERA ci.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <h1 class="gradient-text">Real Estate Utility<br>Reimagined</h1>
+            <p>
+                Pay rent, deposits, and fees with COERA. <br>
+                Experience <strong>0% Risk</strong> volatility and up to <strong>20% Direct Discount</strong> on global
+                properties.
+            </p>
+            <div style="display: flex; gap: 15px; justify-content: center;">
+                <a href="#ecosystem" class="btn btn-primary">Explore Services</a>
+                <a href="#license" class="btn btn-outline">View License</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why COERA?</h2>
+                <p>Designed for practical real-world usage, overcoming the inefficiencies of traditional real estate
+                    markets.</p>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <i class="fas fa-credit-card"></i>
+                    <h3>Seamless Payment</h3>
+                    <p>Pay monthly rent and security deposits directly with COERA tokens. Eliminate complex bank
+                        transfers and high remittance fees.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-tags"></i>
+                    <h3>Up to 20% Discount</h3>
+                    <p>Enjoy exclusive discounts of 10-20% when paying fees or rent with COERA compared to fiat
+                        currency.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Risk 0% System</h3>
+                    <p>Our Real-time Payment System locks the rate at the moment of transaction, removing concerns about
+                        crypto price volatility.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="license" class="section-padding" style="background-color: #162032;">
+        <div class="container">
+            <div class="grid-2">
+                <div>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Global Compliance <br>& <span
+                            class="brand-text">Legal Trust</span></h2>
+                    <p style="margin-bottom: 30px; color: var(--text-muted);">
+                        COERA prioritizes regulatory compliance. Through our US entity, we have secured the authority to
+                        operate legally worldwide.
+                    </p>
+                    <a href="#" class="btn btn-outline">Verify on FinCEN</a>
+                </div>
+                <div class="license-box">
+                    <h3
+                        style="color: white; margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
+                        <i class="fas fa-file-contract"></i> US FinCEN MSB License
+                    </h3>
+                    <div class="license-detail">
+                        <i class="fas fa-check-circle"></i>
+                        <span><strong>Status:</strong> Active & Registered</span>
+                    </div>
+                    <div class="license-detail">
+                        <i class="fas fa-building"></i>
+                        <span><strong>Entity:</strong> Bitrush Global Ltd (COERA Global)</span>
+                    </div>
+                    <div class="license-detail">
+                        <i class="fas fa-fingerprint"></i>
+                        <span><strong>Reg Number:</strong> 31000294365207</span>
+                    </div>
+                    <div class="license-detail">
+                        <i class="fas fa-globe-americas"></i>
+                        <span><strong>Authority:</strong> Dealer in Foreign Exchange,<br>Money Transmitter</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ecosystem" class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>COERA Ecosystem</h2>
+                <p>From property acquisition to daily life care, COERA is with you.</p>
+            </div>
+            <div class="grid-2">
+                <div class="card" style="border-left: 5px solid var(--primary-color);">
+                    <h3>Strategic Partner: IT'S ME</h3>
+                    <p style="margin-bottom: 20px;">
+                        Exclusive partnership with <strong>IT'S ME Asset Management</strong> (Capital: 100B KRW).
+                    </p>
+                    <ul style="color: var(--text-muted);">
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check"
+                                style="color: var(--primary-color); margin-right: 10px;"></i> Premium Property Supply
+                        </li>
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check"
+                                style="color: var(--primary-color); margin-right: 10px;"></i> Sub-lease Management</li>
+                        <li><i class="fas fa-check" style="color: var(--primary-color); margin-right: 10px;"></i> Yield
+                            Payouts in COERA</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="border-left: 5px solid #fff;">
+                    <h3>Total Home Care</h3>
+                    <p style="margin-bottom: 20px;">
+                        An O2O platform service covering your entire stay.
+                    </p>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <span
+                            style="background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem;">Move-in</span>
+                        <span
+                            style="background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem;">Cleaning</span>
+                        <span
+                            style="background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem;">Interior</span>
+                        <span
+                            style="background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem;">IoT
+                            & Repair</span>
+                    </div>
+                    <p style="margin-top: 20px; font-size: 0.9rem;">* All services payable via COERA App.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="roadmap" class="section-padding" style="background-color: #162032;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Roadmap to Expansion</h2>
+            </div>
+            <div class="roadmap-container">
+                <div class="roadmap-item">
+                    <span class="roadmap-date">Phase 1: Foundation (Current)</span>
+                    <p>
+                        [cite_start]• US Entity Established & MSB License Acquired [cite: 107]<br>
+                        [cite_start]• Listing on Dubai Exchange [cite: 108]<br>
+                        [cite_start]• Strategic Partnership with IT'S ME Asset Management [cite: 109]
+                    </p>
+                </div>
+                <div class="roadmap-item">
+                    <span class="roadmap-date">Phase 2: South Korea Launch (2025)</span>
+                    <p>
+                        [cite_start]• Premium Officetel Rent Payment Pilot [cite: 114]<br>
+                        [cite_start]• Home Care Service (Moving, Cleaning) Beta Launch [cite: 115]<br>
+                        • Ecosystem Expansion Marketing
+                    </p>
+                </div>
+                <div class="roadmap-item">
+                    <span class="roadmap-date">Phase 3: Global Expansion - USA (2026 1H)</span>
+                    <p>
+                        [cite_start]• US Market Entry (NY, LA, Denver) [cite: 118]<br>
+                        [cite_start]• Series Investment from IT'S ME [cite: 119]<br>
+                        • Rent Remittance Service for Expats/Students
+                    </p>
+                </div>
+                <div class="roadmap-item">
+                    <span class="roadmap-date">Phase 4: Asia & Middle East (2026 2H~)</span>
+                    <p>
+                        [cite_start]• Expansion to Vietnam & Thailand (Resort/Rentals) [cite: 121]<br>
+                        • Dubai HQ Expansion & Investment Brokerage<br>
+                        • Top-tier Global Exchange Listings
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 class="logo" style="margin-bottom: 20px; color: white;">COERA</h3>
+                    <p>
+                        Standardizing Global Real Estate Utilities.<br>
+                        Token Symbol: <strong>COERA</strong> (Total Supply: 200M)
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: white; margin-bottom: 20px;">Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="coera_image/COERA 백서_초안 (한글).pdf" download>Whitepaper</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: white; margin-bottom: 20px;">Contact</h4>
+                    <ul>
+                        <li>support@coera.global</li>
+                        <li>Telegram Community</li>
+                        <li>Twitter / X</li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.1); margin-bottom: 20px;">
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; opacity: 0.7;">
+                <p>&copy; 2024 COERA GLOBAL LTD. All rights reserved.</p>
+                <p style="font-size: 0.8rem; max-width: 500px; text-align: right;">
+                    [cite_start]Disclaimer: COERA is a utility token for real estate services, not a security token
+                    (STO) for asset securitization. [cite: 126]
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

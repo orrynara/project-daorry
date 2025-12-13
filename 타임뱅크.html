@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIMEBANK - 우주형 카라반 공유 플랫폼</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00d2ff;
+            --secondary: #3a7bd5;
+            --accent: #ff007f;
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-light: #f8fafc;
+            --text-gray: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Noto Sans KR', sans-serif; }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Header Section */
+        header {
+            background: linear-gradient(135deg, #000428, #004e92);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--primary);
+        }
+        
+        h1 { font-size: 3rem; margin-bottom: 10px; color: #fff; text-transform: uppercase; letter-spacing: 2px; }
+        .slogan { font-size: 1.2rem; color: var(--primary); margin-bottom: 20px; font-weight: bold; }
+        .ceo-info { font-size: 0.9rem; color: var(--text-gray); }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Section Styling */
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Overview Grid */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid #334155;
+        }
+        .card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .card i { font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
+        .card h3 { margin-bottom: 15px; color: #fff; }
+
+        /* Roadmap Steps */
+        .roadmap-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+            gap: 20px;
+        }
+        .step {
+            flex: 1;
+            background: linear-gradient(180deg, var(--card-bg) 0%, rgba(30,41,59,0.5) 100%);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border-top: 5px solid var(--secondary);
+            min-width: 250px;
+        }
+        .step-number { font-size: 1.5rem; font-weight: bold; color: var(--secondary); display: block; margin-bottom: 10px; }
+        .step-goal { font-size: 1.2rem; font-weight: bold; }
+
+        /* Investment Structure Comparison */
+        .comparison-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .invest-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .invest-header {
+            padding: 20px;
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .invest-header.special { background: var(--accent); }
+        .invest-body { padding: 30px; }
+        .benefit-list { list-style: none; text-align: left; }
+        .benefit-list li { margin-bottom: 12px; display: flex; align-items: flex-start; }
+        .benefit-list li i { color: var(--primary); margin-right: 10px; margin-top: 5px; }
+
+        /* Membership Plans */
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+        .plan-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            border: 1px solid #334155;
+        }
+        .plan-card.featured {
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+            background: linear-gradient(160deg, var(--card-bg), #1e3a8a);
+        }
+        .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        .price { font-size: 2rem; font-weight: bold; margin: 20px 0; color: #fff; }
+        .period { font-size: 0.9rem; color: var(--text-gray); }
+
+        /* Revenue Chart (CSS Graphic) */
+        .revenue-section {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .stat-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 10px solid var(--card-bg);
+            border-top-color: var(--primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: rgba(255,255,255,0.05);
+        }
+        .stat-label { margin-top: 15px; color: var(--text-gray); font-size: 0.9rem; }
+
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #64748b;
+            border-top: 1px solid #334155;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .plan-card.featured { transform: scale(1); }
+            .comparison-wrapper { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>TIMEBANK</h1>
+        <div class="slogan">"시간을 저축하다, 여행을 누리다" [cite: 3]</div>
+        <p class="ceo-info">대표이사 류만성 | (주)코리아파트너스 [cite: 4, 5]</p>
+    </header>
+
+    <div class="container">
+
+        <h2 class="section-title">PROJECT OVERVIEW</h2>
+        <div class="grid-3">
+            <div class="card">
+                <i class="fas fa-rocket"></i>
+                <h3>핵심 제품</h3>
+                <p>우주형 카라반 및<br>스마트팜 내장 이동식 주택 </p>
+                <p style="font-size:0.8rem; color:var(--text-gray); margin-top:10px;">중국 부품 수입 → 한국 조립 생산 [cite: 10]</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-map-marked-alt"></i>
+                <h3>목표 시장</h3>
+                <p>국내 캠핑장 3,300개 중<br><strong>300개 지점 입점</strong> 목표 [cite: 11]</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-bed"></i>
+                <h3>객실 규모</h3>
+                <p>총 <strong>3,000 객실</strong> 확보<br>(월 매출 10억 목표) [cite: 11, 72]</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">GROWTH ROADMAP</h2>
+        <div class="roadmap-container">
+            <div class="step">
+                <span class="step-number">STEP 01</span>
+                <div class="step-goal">20개 캠핑장</div>
+                <p>300 객실 확보 [cite: 13]</p>
+            </div>
+            <div class="step">
+                <span class="step-number">STEP 02</span>
+                <div class="step-goal">100개 캠핑장</div>
+                <p>1,000 객실 확보 [cite: 14]</p>
+            </div>
+            <div class="step">
+                <span class="step-number" style="color:var(--accent)">FINAL STEP</span>
+                <div class="step-goal">300개 캠핑장</div>
+                <p>3,000 객실 (전국 체인망) [cite: 15]</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">INVESTMENT MODEL</h2>
+        <div class="comparison-wrapper">
+            <div class="invest-card">
+                <div class="invest-header">
+                    <i class="fas fa-mountain"></i> 토지 제공 투자자 (캠핑장주)
+                </div>
+                <div class="invest-body">
+                    <ul class="benefit-list">
+                        <li><i class="fas fa-check"></i> <strong>제공:</strong> 유휴 토지 제공 (시설 투자비 0원) [cite: 18]</li>
+                        <li><i class="fas fa-check"></i> <strong>수익:</strong> 기본 임대료 (월 20만원) + 운영 수익 30% [cite: 20, 21]</li>
+                        <li><i class="fas fa-check"></i> <strong>혜택:</strong> 우주형 카라반 시설 무료 업그레이드 [cite: 22]</li>
+                        <li><i class="fas fa-check"></i> <strong>지원:</strong> 고객 유치 및 인건비 일부 보조 [cite: 23]</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="invest-card">
+                <div class="invest-header special">
+                    <i class="fas fa-coins"></i> 시설 투자자 (개인)
+                </div>
+                <div class="invest-body">
+                    <ul class="benefit-list">
+                        <li><i class="fas fa-check"></i> <strong>방식:</strong> 개인 신용대출 (2~4천만원, 캐피탈 연계) [cite: 26]</li>
+                        <li><i class="fas fa-check"></i> <strong>소유:</strong> 현금 없이 신용으로 카라반 1대 소유 [cite: 28]</li>
+                        <li><i class="fas fa-check"></i> <strong>수익:</strong> 운영 수익 40% 배분 (연 수익률 8~12%) [cite: 30, 31]</li>
+                        <li><i class="fas fa-check"></i> <strong>특전:</strong> 전국 300개 체인망 연 30회 무료 숙박 [cite: 29]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">MEMBERSHIP PLAN</h2>
+        <div class="plans-grid">
+            <div class="plan-card">
+                <h3>일반 회원</h3>
+                <div class="price">0원<span class="period">/월</span></div>
+                <ul class="benefit-list" style="font-size:0.9rem;">
+                    <li><i class="fas fa-times" style="color:#666"></i> 유휴시간 무료 이용 불가</li>
+                    <li><i class="fas fa-circle" style="font-size:0.5rem"></i> 1박 5~7만원대 예약 [cite: 59]</li>
+                    <li><i class="fas fa-circle" style="font-size:0.5rem"></i> 부대시설 정상가 이용 [cite: 61]</li>
+                </ul>
+            </div>
+
+            <div class="plan-card featured">
+                <span class="badge">BEST CHOICE</span>
+                <h3>투지아 모델 회원</h3>
+                <div class="price" style="color:var(--primary)">2만원<span class="period">/월</span></div>
+                <ul class="benefit-list">
+                    <li><i class="fas fa-check"></i> <strong>유휴시간 무료/초저가</strong> (평일 4시간 단위) [cite: 46, 47]</li>
+                    <li><i class="fas fa-check"></i> 주말/성수기 1박 3만원대 정액제 [cite: 48]</li>
+                    <li><i class="fas fa-check"></i> 연 30회 추가 무료 숙박권 [cite: 49]</li>
+                    <li><i class="fas fa-check"></i> 부대시설 20% 할인 [cite: 50]</li>
+                </ul>
+            </div>
+
+            <div class="plan-card">
+                <h3>리조트 프리미엄</h3>
+                <div class="price">10만원<span class="period">/월</span></div>
+                <ul class="benefit-list" style="font-size:0.9rem;">
+                    <li><i class="fas fa-crown" style="color:gold"></i> 연 60박 우선 예약권 [cite: 39]</li>
+                    <li><i class="fas fa-check"></i> 전국 300곳 무제한 이용 [cite: 40]</li>
+                    <li><i class="fas fa-check"></i> 전용 라운지/옵션 우선 제공 [cite: 41]</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="section-title">REVENUE STRUCTURE</h2>
+        <div class="revenue-section">
+            <div>
+                <div class="stat-circle" style="border-top-color: #4ade80;">15%</div>
+                <div class="stat-label">생산 마진 [cite: 69]</div>
+            </div>
+            <div>
+                <div class="stat-circle" style="border-top-color: var(--primary);">20~30%</div>
+                <div class="stat-label">플랫폼 수수료 [cite: 70]</div>
+            </div>
+            <div>
+                <div class="stat-circle" style="border-top-color: var(--accent);">10%</div>
+                <div class="stat-label">부대시설 판매 [cite: 71]</div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>(주)코리아파트너스 | 대표: 류만성 | 전화: 1555-1604 / 0504.429.1975</p>
+        <p>경기도 부천시 부일로 453, 3층 | 이메일: akingstar@naver.com | www.krpts.com [cite: 5]</p>
+        <p style="margin-top:20px; font-size:0.8rem; color:#475569;">Copyright © 2025 TIMEBANK. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
